@@ -126,6 +126,9 @@
 			text-decoration: underline;
 		}
 		@media (max-width: 850px) {
+			.mg-content {
+				overflow-x: hidden;
+			}
 			.mg-posts {
 				margin: 0 16px;
 			}
@@ -141,10 +144,18 @@
 			.mg-post-container div[dir="ltr"]:first-child {
 				height: 130px;
 			}
+			.mg-post-container div[dir="ltr"]:nth-child(2) {
+			    padding: 0 0 0 16px;
+			    overflow: hidden;
+			}
+			.mg-jumbotron h1 {
+			    margin: 28px 0 0 0px;
+			}
 		}
 		@media (max-width: 460px) {
 			.mg-post-card {
 				display: block;
+				margin-bottom: 6px;
 			}
 		}
 	</style>
