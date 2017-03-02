@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="The blog of Manuel Goulão. Discover my projects, my books and my thoughts.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	<title>Blog test</title>
+
+	<meta name="theme-color" content="#004D40">
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script>
 		function handleResponse(response) {
@@ -42,85 +50,8 @@
 				$(".mg-posts").append('<div class="mg-post-card"><div class="mg-post-header"><div class="mg-post-date"><h3>' + dia +'</h3><h4>'+ mes+ " " + ano +'</h4></div><div class="mg-post-title">'+ postTitle +'</div></div><div class="mg-post-container"><div class="mg-post-content">'+ postContent +'</div></div></div>');
 		}
 	</script>
+	<link rel="stylesheet" href="styles/main.css"></link>
 	<style type="text/css">
-		body {
-			margin: 0;
-			background-color: #fff;
-			overflow-y: auto;
-		}
-		button {
-			outline: 0;
-		}
-		h1, h2, h3, h4, h5, h6 {
-			margin: 0;
-			padding: 0;
-		}
-		header {
-			position: fixed;
-			width: 100%;
-			height: 76px;
-			display: flex;
-			z-index: 3
-		}
-		.mg-logo-border {
-			position: absolute;
-			background-color: #000;
-			width: 272px;
-			height: 100px;
-			-webkit-clip-path: polygon(0 0, 0% 100%, 100% 0);
-    		clip-path: polygon(0 0, 0% 100%, 100% 0);
-    		z-index: 2;
-		}
-		.mg-logo-container {
-			position: absolute;
-			background-color: #fff;
-			width: 270px;
-			height: 100px;
-			-webkit-clip-path: polygon(0 0, 0% 100%, 100% 0);
-    		clip-path: polygon(0 0, 0% 100%, 100% 0);
-		}
-		.mg-logo {
-			margin: 16px 23px;
-			width: 88px;
-			height: 32px;
-			background-image: url("http://img05.tooopen.com/images/20140710/sl_81988061449.jpg");
-			background-size: cover;
-			background-color: yellow;
-			-webkit-clip-path: polygon(0 100%, 0 0, 14% 0, 27% 19%, 42% 0, 100% 0, 100% 17%, 54% 17%, 54% 83%, 87% 83%, 87% 64%, 72% 64%, 72% 49%, 100% 50%, 100% 100%, 41% 100%, 41% 31%, 27% 45%, 14% 32%, 14% 100%);
-			clip-path: polygon(0 100%, 0 0, 14% 0, 27% 19%, 42% 0, 100% 0, 100% 17%, 54% 17%, 54% 83%, 87% 83%, 87% 64%, 72% 64%, 72% 49%, 100% 50%, 100% 100%, 41% 100%, 41% 31%, 27% 45%, 14% 32%, 14% 100%);
-
-
-		}
-		.mg-header-content {
-			background: linear-gradient(to right,#fff 0,#90CAF9 22%,#099e9e 63%,#2E7D32 100%);
-			width: 100%;
-			height: 66px;
-			-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 69%);
-			clip-path: polygon(0 0, 100% 0, 100% 100%, 0 69%);
-			 -webkit-filter: drop-shadow(2px 2px 0px red)
-		}
-		header ul {
-			display: flex;
-    		float: right;
-    		width: 400px;
-    		height: 100%;
-    		list-style: none;
-    		margin: 0;
-		}
-		header ul a {
-			text-decoration: none;
-			width: 33%;
-			font-family: sans-serif;
-			color: #fff;
-			padding-top: 22px;
-    		text-align: center;
-		}
-		header ul a:hover {
-			background-color: rgba(255, 255, 255, 0.08);
-		}
-		header ul li {
-			width: 100%;
-		}
 		.mg-content {
 			padding-top: 90px;
 			width: 100%;
@@ -190,54 +121,16 @@
 		.mg-post-container h3:hover {
 			text-decoration: underline;
 		}
-		footer {
-			width: calc(100% - 32px);
-			height: auto;
-			background-color: #37424b;
-			padding: 16px;
-		}
-		footer ul {
-		    display: flex;
-		    list-style: none;
-		    width: 420px;
-		    margin: 12px auto;
-		    padding-left: 0;
-		}
-		footer li {
-		    height: 30px;
-		    width: 140px;
-		}
-		footer a {
-		    display: initial;
-			text-decoration: none;
-			font-family: sans-serif;
-			color: #fff;
-			padding-top: 22px;
-    		text-align: center;
-		}
-		footer .icon {
-		    display: inline-block;
-		    height: 2.5em;
-		    margin-right: 0.5em;
-		}
-		footer span {
-			font-size: 18px;
-		}
-		.mg-footer-about {
-			display: flex;
-			width: 550px;
-			margin: 50px auto;
-		}
-		.mg-footer-about img {
-			width: 120px;
-			height: 120px;
-			border-radius: 50%;
-		}
-		.mg-footer-about h4 {
-			font-size: 22px;
-			color: #fff;
-			padding: 18px;
-			font-family: sans-serif;
+		@media (max-width: 850px) {
+			.mg-content {
+				padding-top: 100px;
+			}
+			.mg-post-card {
+				width: 100%
+			}
+			.mg-post-header {
+			    padding: 0 16px;
+			}
 		}
 	</style>
 </head>
@@ -255,8 +148,21 @@
 				<a href="#"><li>Experiences</li></a>
 				<a href="#"><li>About</li></a>
 			</ul>
+			<div class="mg-hamburguer">
+	  			<svg viewBox="0 0 24 24">
+					<path fill="#fff" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+				</svg>
+			</div>
 		</div>
 	</header>
+	<div class="mg-drawer">
+		<ul>
+			<a href="#"><li>Projects</li></a>
+			<a href="#"><li>Experiences</li></a>
+			<a href="#"><li>About</li></a>
+		</ul>
+	</div>
+	<div class="mg-ofuscator"></div>
 	<div class="mg-content">
 		<div class="mg-posts"></div>
 		<footer>
@@ -289,6 +195,19 @@
             var postId = link[1];
             $("#postUrl").attr("src", "https://www.googleapis.com/blogger/v3/blogs/8686055408016189752/posts/"+ postId +"?callback=handleResponse&key=AIzaSyCnHdWppaGekBqWH-aaCaShiE3zzkENLWs");
         }
+        $(document).ready(function(){
+		    $(".mg-hamburguer").click(function(){
+		    	if ($(".mg-drawer, mg-ofuscator").hasClass("visible")) {
+		    		$(".mg-drawer, .mg-ofuscator").removeClass("visible");
+				}
+				else {
+					$(".mg-drawer, .mg-ofuscator").addClass("visible");
+				}
+		    });
+		    $(".mg-ofuscator").click(function(){
+		    	$(".mg-drawer, .mg-ofuscator").removeClass("visible");
+		    });
+		});
 	</script>
 </body>
 </html>
