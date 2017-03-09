@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script type="text/javascript">
+      var host = "mgoulao.github.io"
+      if (window.location.host == host && window.location.protocol != "https:") {
+        window.location.protocol = "https:"
+      }
+    </script>
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="The blog of Manuel Goulão. Discover my projects, my books and my thoughts.">
@@ -11,126 +17,82 @@
 	<meta name="theme-color" content="#004D40">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script>
-		function handleResponse(response) {
-			console.log(response);
-				var postTitle = response.title;
-				var postContent = response.content;
-				var date = response.published;
-				date = date.split("T")[0];
-				var dia = date.split("-")[2];
-				var mes = Number(date.split("-")[1]);
-				var ano = date.split("-")[0];
-				switch(mes) {
-					case 1: mes = "janeiro";
-						break;
-					case 2: mes = "fevereiro";
-						break;
-					case 3: mes = "março";
-						break;		
-					case 4: mes = "abril";
-						break;
-					case 5: mes = "maio";
-						break;
-					case 6: mes = "junho";
-						break;	
-					case 7: mes = "julho";
-						break;
-					case 8: mes = "agosto";
-						break;
-					case 9: mes = "setembro";
-						break;
-					case 10: mes = "outubro";
-						break;
-					case 11: mes = "novembro";
-						break;	
-					case 12: mes = "dezembro";
-						break;												
-				}
-				$(".mg-posts").append('<div class="mg-post-card"><div class="mg-post-header"><div class="mg-post-date"><h3>' + dia +'</h3><h4>'+ mes+ " " + ano +'</h4></div><div class="mg-post-title">'+ postTitle +'</div></div><div class="mg-post-container"><div class="mg-post-content">'+ postContent +'</div></div></div>');
-		}
-	</script>
 	<link rel="stylesheet" href="styles/main.css"></link>
 	<style type="text/css">
 		.mg-content {
-			padding-top: 90px;
+			padding-top: 48px;
 			width: 100%;
 
 		}
-		.mg-post-card {
+		.mg-project-content {
 			width: 900px;
 			margin: auto;
 			padding-bottom: 16px;
-			border-bottom: 1px solid #BDBDBD;
-			font-family: sans-serif;
-			margin-bottom: 32px;
-		}
-		.mg-post-header {
-			display: flex;
-		}
-		.mg-post-date {
-			padding-right: 16px;
-			color: #AFB42B;
-			border-right: 1px solid #bdbdbd;
-		}
-		.mg-post-date h3 {
-			font-size: 26px;
-		}
-		.mg-post-container {
-			position: relative;
-			padding-top: 22px;
-		}
-		.mg-post-container div[dir="ltr"]:first-child {
-
-		}
-		.mg-post-container div[dir="ltr"]:nth-child(2) {
-			text-align: left;
-    		width: calc(100% - 32px);
-    		padding: 0 16px;
-    		overflow-y: hidden;
-    		font-size: 18px;
-    		line-height: 24px;
-		}
-		.mg-post-container .separator {
 			
 		}
-		.mg-post-container .separator a {
-			margin-left: 0 !important;
-    		margin-right: 0 !important;
-    		display: inline-block;
-    		overflow: hidden;
+		.mg-project {
+			width: 100%;
+			height: 150px;
+			display: flex;
+			border-bottom: 1px solid #BDBDBD;
+			font-family: sans-serif;
 		}
-		.mg-post-title {
-			font-size: 22px;
-    		font-weight: 600;
-    		color: #AFB42B;
-    		margin-bottom: 6px;
-    		padding-left: 16px;
+		.mg-project img {
+			width: 30%;
+			height: 100%;
+			object-fit: cover;
 		}
-		.mg-post-content {
-			font-size: 16px;
-    		color: rgba(0, 0, 0, 0.8)
+		.mg-project-logo {
+			width: 30%;
+			height: calc(100% - 50px);
+			font-size: 32px;
+			background-color: #303f9f;
+			text-align: center;
+			padding-top: 50px;
+			color: #fff;
 		}
-		.mg-post-container h3 {
-			position: absolute;
-			bottom: -8px;
-			right: 0;
-			font-size: 16px;
-			color: rgba(0, 0, 0, 0.8)
+		.mg-project-title {
+			width: 100%;
+			font-size: 48px;
+			color: #AFB42B;
 		}
-		.mg-post-container h3:hover {
-			text-decoration: underline;
+		.mg-project a  {
+			padding: 32px;
+			width: calc(70% - 64px);
+			height: calc(100% - 64px);
+			text-decoration: none;
 		}
 		@media (max-width: 850px) {
 			.mg-content {
-				padding-top: 100px;
+				overflow-x: hidden;
 			}
-			.mg-post-card {
-				width: 100%
+			.mg-project-content {
+				width: 100%;
 			}
-			.mg-post-header {
-			    padding: 0 16px;
+			.mg-jumbotron h1 {
+			    margin: 28px 0 0 0px;
 			}
+			.mg-project a  {
+				padding: 22px;
+				width: calc(70% - 44px);
+				height: calc(100% - 44px);
+				text-decoration: none;
+			}
+		}
+		@media (max-width: 460px) {
+			.mg-project-content {
+				display: block;
+				margin-bottom: 6px;
+			}
+			.mg-project a  {
+				padding: 12px;
+				width: calc(70% - 24px);
+				height: calc(100% - 24px);
+				text-decoration: none;
+			}
+			.mg-project-title {
+			font-size: 38px;
+		}
 		}
 	</style>
 </head>
@@ -144,14 +106,14 @@
 		</div>
 		<div class="mg-header-content">
 			<ul>
-				<a href="projects.html"><li>Projects</li></a>
+				<a href="#"><li>Projects</li></a>
 				<a href="#"><li>Experiences</li></a>
 				<a href="#"><li>About</li></a>
 			</ul>
 			<div class="mg-hamburguer">
 	  			<svg viewBox="0 0 24 24">
 					<path fill="#fff" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
-				</svg>
+				  </svg>
 			</div>
 		</div>
 	</header>
@@ -164,7 +126,29 @@
 	</div>
 	<div class="mg-ofuscator"></div>
 	<div class="mg-content">
-		<div class="mg-posts"></div>
+		<div class="mg-jumbotron">
+			<h1><i>Projects</i></h1>
+		</div>
+		<div class="mg-project-content">
+			<div class="mg-project">
+				<img src="resources/tesla-logo-big.png">
+				<a href="https://teslaportugal.blogspot.com" target="_blank">
+					<div class="mg-project-title">Tesla Portugal</div>
+				</a>
+			</div>
+			<div class="mg-project">
+				<a href="#">
+					<div class="mg-project-title">Golf Stats Project</div>
+				</a>	
+				<div class="mg-project-logo">Golf Stats</div>
+			</div>
+			<div class="mg-project">
+				<img src="resources/ev-map.webp">
+				<a href="https://virtual-school.firebaseapp.com" target="_blank">
+				<div class="mg-project-title">EV Map</div>
+				</a>
+			</div>
+		</div>
 		<footer>
 			<ul>
 				<li><a href="https://twitter.com/mgoulao1">
@@ -178,7 +162,7 @@
 				<li><a href="#">
 				<svg class="icon" viewBox="1 2.5 24 17">
 				    <path fill="#000000" d="M23,11H21V9H19V11H17V13H19V15H21V13H23M8,11V13.4H12C11.8,14.4 10.8,16.4 8,16.4C5.6,16.4 3.7,14.4 3.7,12C3.7,9.6 5.6,7.6 8,7.6C9.4,7.6 10.3,8.2 10.8,8.7L12.7,6.9C11.5,5.7 9.9,5 8,5C4.1,5 1,8.1 1,12C1,15.9 4.1,19 8,19C12,19 14.7,16.2 14.7,12.2C14.7,11.7 14.7,11.4 14.6,11H8Z" />
-				</svg><span>Google +</span></a></li>
+				</svg><span>Google+</span></a></li>
 			</ul>
 			<div class="mg-footer-about">
 				<img src="https://assets.hole19golf.com/users/avatars/000/708/092/thumb/bab510e5579907d21318109512e78bc462738876.jpeg">
@@ -186,16 +170,8 @@
 			</div>
 		</footer>
 	</div>
-	<script id="postUrl"></script>
-	<script type="text/javascript">
-		var link = document.location.href;
-          if (link.toString().length > 50) {
-            link = link.split("?");
-            link = link[1].split("=");
-            var postId = link[1];
-            $("#postUrl").attr("src", "https://www.googleapis.com/blogger/v3/blogs/8686055408016189752/posts/"+ postId +"?callback=handleResponse&key=AIzaSyCnHdWppaGekBqWH-aaCaShiE3zzkENLWs");
-        }
-        $(document).ready(function(){
+	<script> $(".separator a img").css("height", "100%");
+		$(document).ready(function(){
 		    $(".mg-hamburguer").click(function(){
 		    	if ($(".mg-drawer, mg-ofuscator").hasClass("visible")) {
 		    		$(".mg-drawer, .mg-ofuscator").removeClass("visible");
