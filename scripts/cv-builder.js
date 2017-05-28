@@ -38,8 +38,8 @@ var education = {
 	],
 	"onlineCourses": [
 		{ "school": "Udacity",
-			"title": "Android Beginner, EU Scholarship",
-			"completed": "April 2017",
+			"title": "Android Basics Nanodegree, EU Scholarship",
+			"completed": "July 2017",
 			"url": "https://www.udacity.com/google-scholarships"
 		},
 		{ "school": "Udacity",
