@@ -51,7 +51,7 @@ header {
 	height: 66px;
 	-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 69%);
 	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 69%);
-	 -webkit-filter: drop-shadow(2px 2px 0px red)
+	 -webkit-filter: drop-shadow(2px 2px 0px #6b6b6b)
 }
 header ul {
 	display: flex;
@@ -189,6 +189,93 @@ header ul li {
 			padding: 18px;
 			font-family: sans-serif;
 		}
+.mg-post-loader {
+	display: block;
+	height: calc(100vh - 350px);
+	width: 100px;
+	margin: 20px auto; 
+}
+.mg-loader {
+	display: block;
+	height: 120px;
+	width: 100px;
+	margin: 20px auto; 
+}		
+/* Loader Spinner */
+.showbox {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  padding: 5%;
+}
+.loader {
+  position: relative;
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  &:before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+}
+.circular {
+  animation: rotate 2s linear infinite;
+  height: 100%;
+  transform-origin: center center;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.path {
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+  stroke-linecap: round;
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px;
+  }
+}
+
+@keyframes color {
+  100%,
+  0% {
+    stroke: red;
+  }
+  40% {
+    stroke: blue;
+  }
+  66% {
+    stroke: green;
+  }
+  80%,
+  90% {
+    stroke: yellow;
+  }
+}
+/* Fim do Loader */
+
 		@media (max-width: 850px) {
 			.mg-hamburguer {
 				display: block;

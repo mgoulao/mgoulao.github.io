@@ -19,46 +19,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script>
-
-		function handleResponse(response) {
-			for (var i = 0; i <= response.items.length; i++) { 
-				var postTitle = response.items[i].title;
-				var postContent = response.items[i].content;
-				var date = response.items[i].published;
-				var postId = response.items[i].id;
-				date = date.split("T")[0];
-				var dia = date.split("-")[2];
-				var mes = Number(date.split("-")[1]);
-				var ano = date.split("-")[0];
-				switch(mes) {
-					case 1: mes = "janeiro";
-						break;
-					case 2: mes = "fevereiro";
-						break;
-					case 3: mes = "março";
-						break;		
-					case 4: mes = "abril";
-						break;
-					case 5: mes = "maio";
-						break;
-					case 6: mes = "junho";
-						break;	
-					case 7: mes = "julho";
-						break;
-					case 8: mes = "agosto";
-						break;
-					case 9: mes = "setembro";
-						break;
-					case 10: mes = "outubro";
-						break;
-					case 11: mes = "novembro";
-						break;	
-					case 12: mes = "dezembro";
-						break;												
-				}
-				$(".mg-posts").append('<div class="mg-post-card"><div class="mg-post-date"><h3>' + dia +'</h3><h4>'+ mes+ " " + ano +'</h4></div><div class="mg-post-container"><div class="mg-post-title">'+ postTitle +'</div><div class="mg-post-content">'+ postContent +'</div><a href="post.html?postId='+ postId +'"><h3>Read More ></h3></a></div></div>');
-			}
-		}
+		function handleResponse(e){for(var s=0;s<=e.items.length;s++){var a=e.items[s].title,t=e.items[s].content,r=e.items[s].published,i=e.items[s].id,c=(r=r.split("T")[0]).split("-")[2],d=Number(r.split("-")[1]),b=r.split("-")[0];switch(d){case 1:d="january";break;case 2:d="february";break;case 3:d="march";break;case 4:d="april";break;case 5:d="may";break;case 6:d="june";break;case 7:d="july";break;case 8:d="august";break;case 9:d="september";break;case 10:d="october";break;case 11:d="november";break;case 12:d="december"}$(".mg-posts").append('<div class="mg-post-card"><div class="mg-post-date"><h3>'+c+"</h3><h4>"+d+" "+b+'</h4></div><div class="mg-post-container"><div class="mg-post-title">'+a+'</div><div class="mg-post-content">'+t+'</div><a href="post.html?postId='+i+'"><h3>Read More ></h3></a></div></div>')}}
 	</script>
 	<link rel="stylesheet" href="styles/main.css"></link>
 	<style type="text/css">
@@ -164,6 +125,9 @@
 				display: block;
 				margin-bottom: 6px;
 			}
+			.mg-jumbotron h1 {
+			    margin: 28px 0 0 -40px;
+			}
 		}
 	</style>
 </head>
@@ -199,6 +163,13 @@
 		<div class="mg-jumbotron">
 			<h1><i>"Thinking differently"</i></h1>
 		</div>
+		<div class="mg-loader">
+			<div class="loader">
+              	<svg class="circular" viewBox="25 25 50 50">
+                	<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10"/>
+            	</svg>
+            </div>
+		</div>
 		<div class="mg-posts"></div>
 		<footer>
 			<ul>
@@ -222,7 +193,8 @@
 		</footer>
 	</div>
 	<script src="https://www.googleapis.com/blogger/v3/blogs/8686055408016189752/posts?callback=handleResponse&key=AIzaSyCnHdWppaGekBqWH-aaCaShiE3zzkENLWs"></script>
-	<script> $(".separator a img").css("height", "100%");
+	<script> 
+	$(".separator a img").css("height", "100%");
 		$(document).ready(function(){
 		    $(".mg-hamburguer").click(function(){
 		    	if ($(".mg-drawer, mg-ofuscator").hasClass("visible")) {
@@ -236,6 +208,7 @@
 		    	$(".mg-drawer, .mg-ofuscator").removeClass("visible");
 		    });
 		});
+		$(".mg-loader").hide();
 	</script>
 </body>
 </html>
