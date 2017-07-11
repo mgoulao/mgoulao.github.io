@@ -39,7 +39,7 @@ header {
 	margin: 16px 23px;
 	width: 88px;
 	height: 32px;
-	background-image: url("http://img05.tooopen.com/images/20140710/sl_81988061449.jpg");
+	background-image: url("../resources/mg-background.jpg");
 	background-size: cover;
 	background-color: blue;
 	-webkit-clip-path: polygon(0 100%, 0 0, 14% 0, 27% 19%, 42% 0, 100% 0, 100% 17%, 54% 17%, 54% 83%, 87% 83%, 87% 64%, 72% 64%, 72% 49%, 100% 50%, 100% 100%, 41% 100%, 41% 31%, 27% 45%, 14% 32%, 14% 100%);
