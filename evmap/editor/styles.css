@@ -185,6 +185,13 @@ header span {
   display: none;
 }
 
+#info-card-obscurator {
+  height: 100%;
+  margin-left: -16px;
+  position: absolute;
+  bottom: 0;
+}
+
 #search-input {
   display: none;
   position: absolute;
@@ -203,6 +210,7 @@ header span {
 
 .mg-marker-info {
   position: absolute;
+  display: none;
   top: 46px;
   left: 16px;
   width: 300px;
@@ -211,6 +219,11 @@ header span {
   border-radius: 3px;
   overflow-y: hidden;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+.mg-marker-info svg {
+  min-height: 24px;
+  min-width: 24px;
 }
 
 .mg-marker-info-head {
@@ -235,25 +248,131 @@ header span {
   color: rgba(0, 0, 0, 0.7);
 }
 
+.mg-marker-info-content-title h4 {
+  margin: 12px 0 0 8px;
+}
+
 .mg-marker-info-content-title {
   font-weight: 400;
   padding: 0 0 4px 0;
   border-bottom: 1px solid #cecece;
 }
+
 .mg-content-icon {
   display: flex;
   width: 100%;
   margin: 8px 0;
 }
 
-.mg-marker-info .big-button {
+.mg-content-icon h3 {
+  align-self: center;
+  width: 24px;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 16px;
+}
+
+.mg-marker-info .big-button, #edit-card .big-button {
   width: 100%;
   background-color: #1e88e5;
   color: #fff;
-  margin: 0;
+  margin: 12px 0 0 0 ;
 }
 
-#close-info {
+.mg-marker-info .big-button:active {
+  background-color: #1b76c5;
+}
+
+#marker-state {
+  padding: 6px;
+  color: #fff;
+  border-radius: 2px;
+}
+
+.report-state-card {
+  position: absolute;
+  bottom: 32px;
+  left: 16px;
+  background: #fff;
+  border-radius: 4px;
+  padding: 12px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+.report-state-card select {
+  font-size: 16px;
+  padding: 4px 16px;
+  margin-top: 6px;
+  padding: 6px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  outline: 0;
+}
+
+.report-state-card select:focus, .report-state-card select:active {
+  border-bottom: 2px solid #006df0;
+}
+
+.fab {
+  position: absolute;
+  bottom: -23px;
+  right: 26px;
+  width: 46px;
+  height: 46px;
+  background: rgb(255, 64, 129);
+  border-radius: 50%;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.fab:hover {
+  background: rgb(255, 64, 129);
+}
+
+.fab:active {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+#close-info, #close-edit {
   right: 6px;
   top: 6px;
+}
+
+#edit-card {
+  display: none;
+  position: absolute;
+  margin: auto;
+  width: 500px;
+  height: 90%;
+  box-sizing: border-box;
+  top: 16px;
+  right: calc(50% - 250px);
+  background: #fff;
+  border-radius: 4px;
+}
+
+#edit-card input {
+  border: none;
+  border-bottom: 2px solid #006df0;
+  padding: 6px;
+  outline: none;
+  background: transparent;
+  color: #212121;
+  font-size: 16px;
+  margin-left: 12px;
+}
+#edit-card input#edit-title, #edit-card input#edit-address {
+  width: 80%;
+}
+
+
+#edit-card .mg-marker-info-head input {
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  font-size: 18px;
+  margin-left: 0;
+}
+
+#save-edit {
+  margin-top: 16px;
 }
