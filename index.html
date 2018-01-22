@@ -18,13 +18,11 @@
 	<link rel="icon" sizes="192x192" href="resources/icon.png">
 	<meta name="theme-color" content="#004D40">
 
-	<link href="https://unpkg.com/webkul-micron@1.0.2/dist/css/micron.min.css" type="text/css" rel="stylesheet">
-	<script src="https://unpkg.com/webkul-micron@1.0.2/dist/script/micron.min.js" type="text/javascript"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script>
 		function handleResponse(e) {
 			let testImgUrl = "https://3.bp.blogspot.com/-D33tu4jpF-0/WXjo7lqIeUI/AAAAAAAAEHM/PfXhSLcjAWwrGRX7Z-5GIL7XQ6v91QtZwCLcBGAs/s800/android_scholarship.png";
-			for (let i = 0; i <= e.items.length; i++) {
+			for (let i = 0; i < e.items.length; i++) {
 				let more = "";
 				if (e.items[i].title.length > 39) {
 					more = " ...";
@@ -200,7 +198,6 @@
 			-moz-animation: hover-bounce 0.6s;
 			-o-animation: hover-bounce 0.6s;
 			animation: hover-bounce 0.6s;
-
 		}
 
 		@media (max-width: 850px) {
