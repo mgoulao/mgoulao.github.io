@@ -3,7 +3,7 @@ CV Builder
 */
 var bio = {
     "name": "Manuel Filipe Silva Goulão",
-    "role": "Student",
+    "role": "Student at Instituto Superior Técnico",
     "contacts": {
               "mobile": "960332864",
               "email": "msilvagoula@gmail.com",
@@ -12,7 +12,7 @@ var bio = {
 		      "location": "Santarém, Portugal"
               },
     "picture": "https://assets.hole19golf.com/users/avatars/000/708/092/thumb/bab510e5579907d21318109512e78bc462738876.jpeg",
-    "welcomeMessage": "I'm student in Santarém, Portugal.",
+    "welcomeMessage": "I'm from Lisbon, Portugal and I'm studying Telecommunications and Informatics Engineering at Instituto Superior Técnico.",
 	"skills": ["Web Development", "HTML", "CSS", "Javascript", "Android Development"]
 };
 var work = {
