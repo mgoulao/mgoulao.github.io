@@ -217,6 +217,7 @@ button {
     background: #fff;
     border-radius: 50%;
     padding: 8px;
+    object-fit: cover;
     cursor: pointer;
 }
 
@@ -290,6 +291,10 @@ button {
 }
 #menu_2 .menu_option:last-child {
     padding-top: 4px; 
+}
+#menu_2 .menu_option:last-child button{
+    margin: auto;
+    top: -14px;
 }
 #menu_2.active {
     border-radius: 4px;

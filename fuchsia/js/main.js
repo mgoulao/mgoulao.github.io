@@ -52,6 +52,8 @@ $(document).ready(function () {
     var statusTime = $(".status_hour");
     var statusDay = $(".status_day");
     var statusUserImage = $(".fuchsia");
+    var statusLocation = $(".status_location");
+    var signOutButton = $(".signout");
 
 
 
@@ -76,7 +78,7 @@ $(document).ready(function () {
 
     $(document).click(function () {
         statusMenu.removeClass("active");
-        home.css({"transform":"translateY(0px)"});
+        home.css({ "transform": "translateY(0px)" });
 
     });
 
@@ -96,7 +98,11 @@ $(document).ready(function () {
         setTimeout(function () {
             loginLoader.hide();
             lockScreen.hide();
-        }, 2000)
+            lockHour.show();
+            lockOptionsButton.show();
+        lockOptions.removeClass("active");
+        }, 2000);
+        
     });
 
     navbarTime.click(function () {
@@ -112,16 +118,22 @@ $(document).ready(function () {
 
         if (statusMenu.hasClass("active")) {
             statusMenu.removeClass("active");
-            home.css({"transform":"translateY(0px)"});
+            home.css({ "transform": "translateY(0px)" });
         } else {
             statusMenu.addClass("active");
-            home.css({"transform":"translateY(50%)"});
+            home.css({ "transform": "translateY(50%)" });
 
         }
     });
 
     statusMenu.click(function () {
         event.stopPropagation();
+    });
+
+    signOutButton.click(function () {
+        lockScreen.show();
+        statusMenu.removeClass("active");
+        home.css({ "transform": "translateY(0px)" });
     });
 
     homeButton.click(function () {
@@ -183,6 +195,36 @@ $(document).ready(function () {
         }
 
     });
+
+    //Get User Location
+    function codeLatLng(lat, lng) {
+        var geocoder = new google.maps.Geocoder();
+        var latlng = new google.maps.LatLng(lat, lng);
+        geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                console.log(results)
+                var location = results[13].formatted_address;
+                statusLocation.text("in " + location);
+            } else {
+                alert("Geocoder failed due to: " + status);
+            }
+        });
+    }
+
+
+    function success(pos) {
+        var crd = pos.coords;
+        var lat = crd.latitude;
+        var lng = crd.longitude;
+        codeLatLng(lat, lng)
+    }
+
+    function error(err) {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error);
+
 
 
 })
