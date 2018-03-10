@@ -87,7 +87,7 @@ body {
 
 #lockscreen {
     position: absolute;
-    display: block;
+    display: none;
     width: 100%;
     height: 100%;
     z-index: 99;
@@ -273,9 +273,13 @@ button {
     overflow: hidden;
     transition: all 0.5s ease;
     z-index: 99;
+    background: #fff;
 }
 #menu_2 .menu_option {
     padding: 16px 40px;
+}
+#menu_2 .menu_option i {
+    line-height: 16px;
 }
 #menu_2 i:nth-child(3) {
     position: absolute;
@@ -283,6 +287,9 @@ button {
 }
 #menu_2 .menu_option:hover {
     background: #fff;
+}
+#menu_2 .menu_option:last-child {
+    padding-top: 4px; 
 }
 #menu_2.active {
     border-radius: 4px;
@@ -296,6 +303,11 @@ button {
     background: #fff;
     margin: 0;
     color: #777777;
+    margin-bottom: 12px;
+}
+#menu_2 .fuchsia img {
+    padding: 0;
+    margin-top: 8px;
 }
 #menu_2 .status_date {
     padding: 12px 0;
@@ -347,9 +359,11 @@ button {
 
 .menu_option .mdl-slider__container {
     align-self: center;
+    width: -webkit-fill-available;
+    margin: 0 40px;
 }
 
-.menu_volume span {
+.menu_volume span, .menu_screen span {
     width: 100px;
 }
 
