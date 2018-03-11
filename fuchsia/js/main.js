@@ -225,8 +225,5 @@ $(document).ready(function () {
 
     navigator.geolocation.getCurrentPosition(success, error);
 
-    //Request fullscreen
-    document.body.requestFullscreen();
-
 })
 
