@@ -100,9 +100,9 @@ $(document).ready(function () {
             lockScreen.hide();
             lockHour.show();
             lockOptionsButton.show();
-        lockOptions.removeClass("active");
+            lockOptions.removeClass("active");
         }, 2000);
-        
+
     });
 
     navbarTime.click(function () {
@@ -225,7 +225,8 @@ $(document).ready(function () {
 
     navigator.geolocation.getCurrentPosition(success, error);
 
-
+    //Request fullscreen
+    document.body.requestFullscreen();
 
 })
 
