@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300');
 :root {
-    --background-color: linear-gradient(to top right, #02b3e4, #02ccba);
+    --status-bar-width: 720px;
+    --status-bar-grid-columns: 335px 50px 335px;
+    --home-width: 800px;
+    --home-cards-grid-column: 50% 50%;
 }
 
 * {
@@ -87,7 +90,7 @@ body {
 
 #lockscreen {
     position: absolute;
-    display: block;
+    display: none;
     width: 100%;
     height: 100%;
     z-index: 99;
@@ -169,12 +172,12 @@ button {
     position: absolute;
     left: 0;
     right: 0;
-    width: 720px;
+    width: var(--status-bar-width);
     height: 50px;
     color: #fff;
     display: grid;
     margin: 45vh auto 50px;
-    grid-template-columns: 335px 50px 335px;
+    grid-template-columns: var(--status-bar-grid-columns);
 }
 
 .status_date {
@@ -265,7 +268,7 @@ button {
 #menu_2 {
     width: 0;
     height: 0;
-    border-radius: 50%; 
+    border-radius: 50%;
     display: block;
     left: 0;
     right: 0;
@@ -276,33 +279,41 @@ button {
     z-index: 99;
     background: #fff;
 }
+
 #menu_2 .menu_option {
     padding: 16px 40px;
 }
+
 #menu_2 .menu_option i {
     line-height: 16px;
 }
+
 #menu_2 i:nth-child(3) {
     position: absolute;
     right: 40px;
 }
+
 #menu_2 .menu_option:hover {
     background: #fff;
 }
+
 #menu_2 .menu_option:last-child {
-    padding-top: 4px; 
+    padding-top: 4px;
 }
-#menu_2 .menu_option:last-child button{
+
+#menu_2 .menu_option:last-child button {
     margin: auto;
     top: -14px;
 }
+
 #menu_2.active {
     border-radius: 4px;
     bottom: 50px;
-    width: 720px;
+    width: var(--status-bar-width);
     height: 450px;
     transition: all 0.5s ease;
 }
+
 #menu_2 .status_bar {
     position: relative;
     background: #fff;
@@ -310,13 +321,16 @@ button {
     color: #777777;
     margin-bottom: 12px;
 }
+
 #menu_2 .fuchsia img {
     padding: 0;
     margin-top: 8px;
 }
+
 #menu_2 .status_date {
     padding: 12px 0;
 }
+
 .menu.active {
     display: block;
 }
@@ -381,15 +395,15 @@ button {
 #home {
     position: absolute;
     display: block;
-    background: #DAE2E5;
+    background: #eceff1;
     border-radius: 5px;
     height: 100%;
-    width: 800px;
+    width: var(--home-width);
     left: 0;
     right: 0;
     margin: 65vh auto 50px;
     cursor: pointer;
-    transition: transform 0.3s ease-in; 
+    transition: transform 0.3s ease-in;
 }
 
 #home.active {
@@ -398,17 +412,16 @@ button {
 
 .google_search {
     display: flex;
-    background: #eee;
+    background: #fff;
     border-radius: 5px;
     height: 80px;
-    width: 800px;
+    width: 100%;
     align-self: center;
     padding: 0 32px;
     margin-bottom: 18px;
 }
 
 .search_input {
-    background: #eee;
     color: #777777;
     font-size: 18px;
     border: none;
@@ -432,7 +445,7 @@ button {
 .home_cards {
     width: 100%;
     display: inline-grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: var(--home-cards-grid-column);
 }
 
 .card {
@@ -440,7 +453,7 @@ button {
     height: 100px;
     display: grid;
     grid-template-columns: 25% 75%;
-    background: #eee;
+    background: #fff;
     border-radius: 8px;
     margin: 16px auto;
     transition: box-shadow 0.3s ease;
@@ -519,4 +532,49 @@ button {
         width: 100%;
         height: 100%;
     }
+}
+
+@media screen and (max-width: 800px) {
+    :root {
+        --status-bar-width: 100%;
+        --status-bar-grid-columns: calc(50% - 25px) 50px calc(50% - 25px);
+        --home-width: 100%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .status_date {
+        display: block;
+    }
+    .status_hour {
+        margin: 0 0 0 10px;
+        font-size: 18px;
+        font-weight: 600;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    :root {
+        --home-cards-grid-column: 100%;
+    }
+    .status div:first-child {
+        display: none;
+    }
+    .status_date div h6:nth-child(1) {
+        display: none;
+    }
+    .status div {
+        position: absolute;
+        right: 40px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .status_date {
+        margin: 0 0 0 4px;
+    }
+    .status div {
+        right: 4px;
+    }
+    #menu
 }
