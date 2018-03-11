@@ -36,6 +36,7 @@ function getWeekDay(d) {
 }
 $(document).ready(function () {
     var navbarTime = $("#navbar_time");
+    var navbar = $(".navbar");
     var homeButton = $("#home_button");
     var menu = $("#menu");
     var statusMenu = $("#menu_2");
@@ -54,8 +55,16 @@ $(document).ready(function () {
     var statusUserImage = $(".fuchsia");
     var statusLocation = $(".status_location");
     var signOutButton = $(".signout");
-
-
+    var searchInput = $(".search_input");
+    var card = $(".card");
+    var openedApp = $("#opened_app");
+    var openedAppContent = $("#app_content");
+    var openedAppHeader = $("#opened_app header");
+    var openedAppObj;
+    //Draggable
+    var slideHeight = $('body').height() * 0.5;
+    var min = 0;
+    var max = -slideHeight;
 
     //Date 
     var today = new Date();
@@ -77,9 +86,17 @@ $(document).ready(function () {
     updateTime();
 
     $(document).click(function () {
-        statusMenu.removeClass("active");
-        home.css({ "transform": "translateY(0px)" });
+        if (statusMenu.hasClass("active")) {
+            statusMenu.removeClass("active");
+            showHome();
+        } else if (menu.hasClass("active")) {
+            menu.removeClass("active");
+        }
+    });
 
+    searchInput.click(function () {
+        event.stopPropagation();
+        home.css({ "top": max + "px" });
     });
 
     lockOptionsButton.click(function () {
@@ -106,6 +123,8 @@ $(document).ready(function () {
     });
 
     navbarTime.click(function () {
+        event.stopPropagation();
+        console.log("click time");
         if (menu.hasClass("active")) {
             menu.removeClass("active");
         } else {
@@ -113,15 +132,18 @@ $(document).ready(function () {
         }
     });
 
-    statusUserImage.click(function () {
+    menu.click(function () {
         event.stopPropagation();
+    })
+
+    statusUserImage.click(function () {
 
         if (statusMenu.hasClass("active")) {
             statusMenu.removeClass("active");
-            home.css({ "transform": "translateY(0px)" });
+            showHome();
         } else {
             statusMenu.addClass("active");
-            home.css({ "transform": "translateY(50%)" });
+            hideHome();
 
         }
     });
@@ -133,24 +155,46 @@ $(document).ready(function () {
     signOutButton.click(function () {
         lockScreen.show();
         statusMenu.removeClass("active");
-        home.css({ "transform": "translateY(0px)" });
+        showHome();
     });
 
     homeButton.click(function () {
-        if (home.hasClass("active")) {
-            home.removeClass("active");
-        } else {
-            home.addClass("active");
-        }
+        openedAppObj.close();
+        showHome();
+    });
+
+    function hideHome() {
+        event.stopPropagation();
+        home.css({ "top": "0px" });
+        home.css({ "transform": "translateY(50%)" });
+    }
+
+    function showHome() {
+        event.stopPropagation();
+        home.css({ "top": "0px" });
+        home.css({ "transform": "translateY(0px)" });
+        hideNavBar();
+    }
+
+    function showNavBar() {
+        navbar.show();
+    }
+
+    function hideNavBar() {
+        navbar.hide();
+    }
+
+    card.click(function (e) {
+        console.log("Click Card: ", e.currentTarget.id);
+        var cardId = e.currentTarget.id;
+        openedAppObj = new App(cardId);
     });
 
     Number.prototype.roundTo = function (nTo) {
         nTo = nTo || 10;
         return Math.round(this * (1 / nTo)) * nTo;
     }
-    var slideHeight = $('body').height() * 0.5;
-    var min = 0;
-    var max = -slideHeight;
+
     console.log("Max", max);
     home.draggable({
         axis: "y",
@@ -159,10 +203,8 @@ $(document).ready(function () {
         drag: function (event, ui) {
             if (ui.position.top > min) ui.position.top = min;
             if (ui.position.top < max) ui.position.top = max;
-
         },
         stop: function (event, ui) {
-            console.log(ui.position);
             var topPositionRounded = (ui.position.top).roundTo(slideHeight);
 
             $(this).animate({
@@ -225,5 +267,50 @@ $(document).ready(function () {
 
     navigator.geolocation.getCurrentPosition(success, error);
 
+    var appData = {
+        "inbox": {
+            "title": "Inbox",
+            "color": "#4285f4",
+            "content": "<h2>Content</h2>"
+        },
+        "recipes": {
+            "title": "Recipes",
+            "color": "#455A64",
+            "content": "<h2>Content</h2>"
+        },
+        "maps": {
+            "title": "Maps",
+            "color": "#689df6",
+            "content": "Content"
+        }
+    }
+
+    class App {
+        constructor(id) {
+            this.title = appData[id].title;
+            this.color = appData[id].color;
+            this.content = appData[id].content;
+            this.open();
+        }
+
+        open() {
+            console.log("Open App");
+            hideHome();
+            showNavBar();
+            openedAppHeader.text(this.title);
+            openedAppHeader.css({"background": this.color});
+            openedAppContent.html(this.content);
+            openedApp.addClass("active");
+        }
+        close() {
+            console.log("Close App");
+            showHome();
+            hideNavBar();
+            openedApp.removeClass("active");
+        }
+    }
+
 })
+
+
 

@@ -146,7 +146,7 @@
         </div>
     </div>
 
-    <div class="menu">
+    <div class="menu" id="menu">
         <div class="menu_option menu_user">
             <img class="user_icon" src="http://web.tecnico.ulisboa.pt/ist191049/resources/profile.jpg">
 
@@ -211,21 +211,21 @@
 
         <div class="apps">
             <div class="home_cards">
-                <div class="card">
+                <div class="card" id="inbox">
                     <img class="card_image" src="resources/ginbox_icon.png">
                     <div class="card-content">
                         <h6 class="card_header">Inbox</h6>
                         <h5 class="card_text">You received a new email</h5>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card" id="recipes">
                     <img class="card_image" src="resources/recipes.jpg">
                     <div class="card-content">
                         <h6 class="card_header">Google</h6>
                         <h5 class="card_text">See recipes for you</h5>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card" id="maps">
                     <img class="card_image" src="resources/ist.png">
                     <div class="card-content">
                         <h6 class="card_header">Maps</h6>
@@ -234,6 +234,11 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div id="opened_app">
+        <header><span id="app_title">Title</span></header>
+        <div id="app_content">Content</div>
     </div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClIi_QsVzwnWetSX7GsAy0nL_ivAp54-8&sensor=false"></script>
