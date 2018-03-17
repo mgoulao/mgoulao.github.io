@@ -12,6 +12,12 @@ var projects = {
             "color": "mg-almost-black",
             "link": "https://esteveste.github.io/Chess_Google_Assistant_Contest"
         },
+         {
+            "title": "Fuchsia Web Demo",
+            "img": "",
+            "color": "mg-probably-red",
+            "link": "https://mgoulao.github.io/fuchsia/"
+        },
         {
             "title": "EV Map",
             "img": "./resources/ev-map.webp",
