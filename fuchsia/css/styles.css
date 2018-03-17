@@ -96,7 +96,7 @@ body {
 
 #lockscreen {
     position: absolute;
-    display: none;
+    display: block;
     width: 100%;
     height: 100%;
     z-index: 99;
@@ -696,4 +696,9 @@ button {
     .status div {
         right: 4px;
     }
+<<<<<<< HEAD
 }
+=======
+    #menu
+}
+>>>>>>> b90d63bc2f26ed4dbccda6af5af4a9394bf4b523
