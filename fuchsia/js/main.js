@@ -217,7 +217,7 @@ $(document).ready(function () {
         openedAppObj = new App(cardId);
     });
 
-    appContainer.bind("taphold", function (e) {
+    appContainer.click(function (e) {
         console.log("Click Card: ", e.currentTarget.id);
         var cardId = e.currentTarget.id;
         openedAppObj = new App(cardId);
