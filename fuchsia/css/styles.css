@@ -6,6 +6,10 @@
     --status-bar-grid-columns: 335px 50px 335px;
     --home-width: 800px;
     --home-cards-grid-column: 50% 50%;
+    --app-history-width: 800px;
+    --app-history-grid-columns: auto auto;
+    --small-cards-rows: 205px;
+    --big-cards-rows: 215px;
 }
 
 * {
@@ -180,6 +184,8 @@ button {
     display: grid;
     margin: 45vh auto 50px;
     grid-template-columns: var(--status-bar-grid-columns);
+    cursor: default;
+    transition: opacity 0.4s ease;
 }
 
 .status_date {
@@ -255,7 +261,7 @@ button {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .menu {
@@ -414,7 +420,7 @@ button {
     right: 0;
     margin: 65vh auto 50px;
     cursor: pointer;
-    transition: transform 0.3s ease-in;
+    transition: transform 0.3s ease-in, opacity 0.4s ease;
 }
 
 #home.active {
@@ -538,6 +544,65 @@ button {
     overflow: auto;
 }
 
+/* App History */
+
+#app_history {
+    position: absolute;
+    width: var(--app-history-width);
+    left: 0;
+    right: 0;
+    top: -100vh;
+    margin: auto;
+    padding: 50px 0 50px 0 ;
+    transition: transform 0.1s ease-in;
+}
+
+.small_cards {
+    position: relative;
+    width: 85%;
+    margin: 0 auto 32px auto;
+    display: grid;
+    grid-template-columns: var(--app-history-grid-columns);
+    grid-auto-rows: var(--small-cards-rows);
+    grid-gap: 32px 50px;
+}
+
+.big_cards {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: var(--app-history-grid-columns);
+    grid-auto-rows: var(--big-cards-rows);
+    grid-gap: 32px 50px;
+}
+
+.app_container {
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.app_container:nth-child(odd) {
+    justify-self: end
+}
+
+.app_container h6 {
+    height: 15%;
+    color: #fff;
+    font-size: 16px;
+    margin: 0;
+    padding: 2px 6px;
+}
+
+.history_card {
+    position: relative;
+    width: 100%;
+    height: 85%;
+    background: #fff;
+    border-radius: 4px;
+}
+
 .loader {
     position: relative;
     display: none;
@@ -582,6 +647,16 @@ button {
         --status-bar-width: 100%;
         --status-bar-grid-columns: calc(50% - 25px) 50px calc(50% - 25px);
         --home-width: 100%;
+        --app-history-width: 90%;
+        --app-history-grid-columns: auto;
+        --small-cards-rows: 150px;
+    --big-cards-rows: 150px;
+    }
+    #app_history {
+        margin: 0 auto;
+    }
+    .small_cards {
+        width: 100%;
     }
 }
 
@@ -621,5 +696,4 @@ button {
     .status div {
         right: 4px;
     }
-    #menu
 }

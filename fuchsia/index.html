@@ -12,7 +12,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="manifest" href="manifest.json">
-    <link rel="shortcut icon" type="image/png" href="resources/favicon.png"/>
+    <link rel="shortcut icon" type="image/png" href="resources/favicon.png" />
     <title>Fuchsia</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="css/mdl.min.css">
@@ -55,7 +55,7 @@
         </div>
     </div>
 
-    <div class="status_bar">
+    <div class="status_bar" unselectable="on">
         <div class="status_date">
             <span class="status_hour">00:00</span>
             <div>
@@ -237,8 +237,40 @@
     </div>
 
     <div id="opened_app">
-        <header><span id="app_title">Title</span></header>
+        <header>
+            <span id="app_title">Title</span>
+        </header>
         <div id="app_content">Content</div>
+    </div>
+
+    <div id="app_history" unselectable="on">
+        <div class="small_cards">
+            <div class="app_container" id="app1">
+                <div class="history_card"></div>
+                <h6>App1</h6>
+            </div>
+
+            <div class="app_container"  id="app2">
+                <div class="history_card"></div>
+                <h6>App2</h6>
+            </div>
+            <div class="app_container"  id="app3">
+                <div class="history_card"></div>
+                <h6>App3</h6>
+            </div>
+        </div>
+
+        <div class="big_cards">
+            <div class="app_container"  id="app4">
+                <div class="history_card"></div>
+                <h6>App4</h6>
+            </div>
+            <div class="app_container" id="app5">
+                <div class="history_card"></div>
+                <h6>App5</h6>
+            </div>
+        </div>
+
     </div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClIi_QsVzwnWetSX7GsAy0nL_ivAp54-8&sensor=false"></script>
