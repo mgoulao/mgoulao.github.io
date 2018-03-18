@@ -7,6 +7,60 @@ MANY THANKS TO @tadywankenobi for the following JS to handle the text in the byl
 The following JS takes in the byline and splits it into letters, each one wrapped in a span. We need to create the spans as nodes, we can't just add them to the HTML using innerHTML, as to do so would mean the CSS won't affect the span because it doesn't recognise the tag as existing. It's an old problem we run into time and again.
 
 */
+$("document").ready(function () {
+
+
+    var introLogo = $(".starwars-demo"), introText = $("#intro_text"), pageContent = $(".page_content"), intro = true;
+
+
+    if (intro) {
+        introLogo.show();
+        setTimeout(function () {
+            introText.show();
+        }, 5000);
+
+        setTimeout(function () {
+            introLogo.hide();
+        }, 10000);
+
+        setTimeout(function () {
+            pageContent.show();
+        }, 30000);
+        setTimeout(function () {
+            pageContent.css({"opacity": 1});
+        }, 35000);
+    } else {
+        pageContent.show();
+        setTimeout(function () {
+            pageContent.css({"opacity": 1});
+        }, 1000);
+    }
+
+    // Add smooth scrolling to all links
+    $("a").on('click', function (event) {
+
+        // Make sure this.hash has a value before overriding default behavior
+        if (this.hash !== "") {
+            // Prevent default anchor click behavior
+            event.preventDefault();
+
+            // Store hash
+            var hash = this.hash;
+
+            // Using jQuery's animate() method to add smooth page scroll
+            // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top
+            }, 800, function () {
+
+                // Add hash (#) to URL when done scrolling (default click behavior)
+                window.location.hash = hash;
+            });
+        } // End if
+    });
+
+});
+
 
 var byline = document.getElementById('byline');  	// Find the H2
 bylineText = byline.innerHTML;										// Get the content of the H2

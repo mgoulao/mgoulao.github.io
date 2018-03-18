@@ -1,3 +1,26 @@
+@font-face {
+    font-family: 'Aurebesh';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../resources/Aurebesh.ttf) format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+body {
+    background: #000 url(../resources/bg.jpg);
+}
+
 /* Animation properties */
 
 .star {
@@ -83,21 +106,14 @@
 /* Make the 3D work on the container */
 
 .starwars-demo {
+    display: none;
     perspective: 800px;
     transform-style: preserve3d;
 }
 
 /* General styles and layout */
 
-body {
-    background: #000 url(../resources/bg.jpg);
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
+
 
 .starwars-demo {
     height: 17em;
@@ -137,7 +153,7 @@ img {
     right: -2em;
     text-align: center;
     text-transform: uppercase;
-    top: 29%;
+    top: 41%;
 }
 
 /*** Media queries for adjusting to different screen sizes ***/
@@ -152,4 +168,227 @@ img {
     .starwars-demo {
         font-size: 7px;
     }
+}
+
+/* Text */
+
+#intro_text {
+    position: absolute;
+    display: none;
+    width: 18em;
+    height: 35em;
+    bottom: 0;
+    left: 50%;
+    margin-left: -9em;
+    font-size: 350%;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-align: justify;
+    overflow: hidden;
+    transform-origin: 50% 100%;
+    transform: perspective(300px) rotateX(25deg);
+    color: #ff6;
+}
+
+#intro_text:after {
+    position: absolute;
+    content: ' ';
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 60%;
+    background-image: linear-gradient(top, rgba(0, 0, 0, 1) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+#titlecontent {
+    position: absolute;
+    top: 100%;
+    animation: scroll 50s linear 4s;
+}
+
+@keyframes scroll {
+    0% {
+        top: 100%;
+    }
+    100% {
+        top: -170%;
+    }
+}
+
+.center {
+    text-align: center;
+}
+
+/* Page Content */
+
+.page_content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+    opacity: 0;
+    transition: opacity 3s ease;
+}
+
+/* Page Content */
+
+header {
+    display: flex;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.menu_container {
+    margin: 50px auto;
+    display: flex;
+    padding: 16px;
+    align-items: center;
+}
+
+.menu_option {
+    display: grid;
+    cursor: pointer;
+}
+
+.menu_option:hover > .option_t_white, .octagon_t_white:hover {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.menu_option:hover > .option_white {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.octagon_white:hover {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.menu_option:hover > .option_t_red, .octagon_t_red:hover {
+    background: rgba(255, 0, 0, 0.7);
+    border: 1px solid rgba(255, 0, 0, 0.6);
+}
+
+.menu_text {
+    position: relative;
+    font-family: "Aurebesh", sans-serif;
+    color: #fff;
+    letter-spacing: 4px;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 18px;
+    padding: 5px;
+    transition: background 0.5s ease;
+}
+
+.option_t_white {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #458ba9;
+}
+
+.option_white {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.option_t_red {
+    background: rgba(255, 0, 0, 0.5);
+    border: 1px solid rgba(255, 0, 0, 0.4);
+}
+
+.octagon_container {
+    transform: rotate(22.5deg);
+}
+
+.octagonWrap {
+    width: 140px;
+    height: 140px;
+    float: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.octagon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    transform: rotate(45deg);
+    transition: background 0.5s ease, border 0.5s ease;
+}
+
+.octagon_t_white {
+    background: rgba(255, 255, 255, 0.7);
+    border: 3px solid rgba(255, 255, 255, 0.5);
+}
+
+.octagon_white {
+    background: #fff;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+}
+
+.octagon_t_red {
+    background: rgba(255, 0, 0, 0.5);
+    border: 3px solid rgba(255, 0, 0, 0.4);
+}
+
+.octagon:before {
+    position: absolute;
+    /* There needs to be a negative value here to cancel
+     * out the width of the border. It's currently -3px,
+     * but if the border were 5px, then it'd be -5px.
+     */
+    top: -3px;
+    right: -3px;
+    bottom: -3px;
+    left: -3px;
+    transform: rotate(45deg);
+    content: '';
+    border: inherit;
+}
+
+.lightsaber {
+    width: 100px;
+    height: 2px;
+    margin: 0 16px 53px;
+}
+
+.blue {
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(#2196F3), color-stop(0.1, #fff), color-stop(0.5, #fff), color-stop(0.9, #fff), to(#2196F3));
+    box-shadow: 0px 0px 20px 8px #2196F3;
+}
+
+.red {
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(#F44336), color-stop(0.1, #fff), color-stop(0.5, #fff), color-stop(0.9, #fff), to(#F44336));
+    box-shadow: 0px 0px 20px 8px #F44336;
+}
+
+section {
+    width: 800px;
+    margin: auto;
+    padding: 32px;
+    font-family: "Aurebesh", sans-serif;
+    color: #fff;
+    letter-spacing: 3px;
+}
+
+.topic_content {
+    width: 100%;
+    margin-top: 16px;
+}
+
+.topic_content p {
+    padding: 32px 0;
 }

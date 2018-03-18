@@ -30,6 +30,11 @@ body {
     background: url("../resources/background-1.jpg") no-repeat fixed center;
     overflow: hidden;
     font-family: 'Roboto', sans-serif;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .container {
