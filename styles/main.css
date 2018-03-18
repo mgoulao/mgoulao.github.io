@@ -129,7 +129,7 @@ header ul li {
 	top: 50px;
 	right: 0;
 	width: 300px;
-	height: calc(100% - 50px);
+	height: 100%;
 	z-index: 4;
 	background-color: #fff;
 	-webkit-transform: translateX(300px);
@@ -195,13 +195,13 @@ header ul li {
 }
 
 .mg-drawer ul li {
-	width: calc(100% - 76px);
+	width: 100%;
 	padding: 18px 38px;
 	font-size: 20px;
 }
 
 .mg-jumbotron {
-	width: calc(100% - 100px);
+	width: 100%;
 	padding: 50px;
 	margin-bottom: 42px;
 	height: 200px;
@@ -216,7 +216,7 @@ header ul li {
 }
 
 footer {
-	width: calc(100% - 32px);
+	width: 100%;
 	height: auto;
 	background-color: #37424b;
 	padding: 16px;
