@@ -21,6 +21,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script>
 		function handleResponse(e) {
+			overlayColors = ["mg-green", "mg-kinda-purple", "mg-almost-black", "mg-probably-red"];
 			let testImgUrl = "https://3.bp.blogspot.com/-D33tu4jpF-0/WXjo7lqIeUI/AAAAAAAAEHM/PfXhSLcjAWwrGRX7Z-5GIL7XQ6v91QtZwCLcBGAs/s800/android_scholarship.png";
 			for (let i = 0; i < e.items.length; i++) {
 				let more = "";
@@ -33,7 +34,8 @@
 					id = e.items[i].id,
 					day = published.split("T")[0].split("-")[2],
 					month = Number(published.split("-")[1]),
-					year = published.split("-")[0];
+					year = published.split("-")[0],
+					overlayClass = overlayColors[Math.floor(Math.random() * overlayColors.length)];
 
 				let imageArray = content.split('src=\"')[1];
 				let postImage = "";
@@ -81,7 +83,8 @@
 						month = "december"
 				}
 				$(".mg-posts").append('<div class="mg-post-card">' +
-					'<div class="mg-post-photo" style="background-image: url(' + postImage + ')"></div>' +
+					'<div class="mg-post-photo" style="background-image: url(' + postImage + ')">' +
+					'<div class="' + overlayClass + '"></div></div>' +
 					'<div class="mg-post-container">' +
 					'<div class="mg-post-header">' +
 					'<div class="mg-post-date">' + month + ' ' + day + ', ' + year + '</div>' +
@@ -125,10 +128,14 @@
 			background-size: cover;
 		}
 
+		.mg-post-photo div {
+			width: 100%;
+			height: 100%;
+		}
+
 		.mg-post-header {
 			height: 24px;
 			display: flex;
-			background-image: -webkit-linear-gradient(135deg, #202aff 0, #9ba8fd 100%);
 			padding: 16px;
 
 		}
@@ -137,7 +144,7 @@
 			min-width: 116px;
 			font-size: 18px;
 			font-weight: 600;
-			color: #fff;
+			color: #424242;
 			padding-right: 16px;
 			line-height: 26px;
 		}
@@ -156,7 +163,7 @@
 		.mg-post-title {
 			font-size: 22px;
 			font-weight: 600;
-			color: #fff;
+			color: #424242;
 		}
 
 		.mg-post-content {
