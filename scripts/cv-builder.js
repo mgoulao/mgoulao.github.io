@@ -6,7 +6,7 @@ var bio = {
 		"email": "msilvagoula@gmail.com",
 		"github": "mgoulao",
 		"twitter": "@mgoulao_1",
-		"location": "Santarém, Portugal"
+		"location": "Lisbon, Portugal"
 	},
 	"picture": "https://assets.hole19golf.com/users/avatars/000/708/092/thumb/bab510e5579907d21318109512e78bc462738876.jpeg",
 	"welcomeMessage": "I'm from Lisbon, Portugal and I'm studying Telecommunications and Informatics Engineering at Instituto Superior Técnico.",
@@ -27,11 +27,11 @@ var work = {
 var education = {
 	"schools": [
 		{
-			"name": "Escola Secundária Dr. Ginestal Machado",
-			"datesAttended": "2013 - 2016",
-			"location": "Santarém, Portugal",
-			"degree": "High School",
-			"url": "http://agrupamento-ginestalmachado.net/"
+			"name": "Instituto Superior Técnico",
+			"datesAttended": "2017 - 2020",
+			"location": "Lisbon, Portugal",
+			"degree": "Bologna Degree",
+			"url": "https://tecnico.ulisboa.pt/pt/"
 		}
 	],
 	"onlineCourses": [
@@ -47,15 +47,6 @@ var education = {
 var projects = {
     "projects": [
         {
-            "title": "Tesla Portugal",
-            "img": "./resources/tesla-logo-big.png",
-			"color": "mg-green",
-			"dates": "2017 - 2018",
-			"description": "",
-			"images": [],
-            "link": "https://teslaportugal.blogspot.com"
-        },
-        {
             "title": "Chess Mate",
             "img": "./chess/Wallpaper-big.png",
 			"color": "mg-almost-black",
@@ -64,26 +55,35 @@ var projects = {
 			"images": [],
             "link": "https://esteveste.github.io/Chess_Google_Assistant_Contest"
         },
-         {
+        {
             "title": "Fuchsia Web Demo",
             "img": "",
-			"color": "mg-probably-red",
-			"dates": "2017 - 2018",
-			"description": "",
+            "color": "mg-probably-red",
+            "dates": "2018 - present",
+			"description": "Small Web Demo of the new Google OS project",
 			"images": [],
             "link": "https://mgoulao.github.io/fuchsia/"
+        },
+        {
+            "title": "Tesla Portugal",
+            "img": "./resources/tesla-logo-big.png",
+			"color": "mg-green",
+			"dates": "2015 - 2017",
+			"description": "",
+			"images": [],
+            "link": "https://teslaportugal.blogspot.com"
         },
         {
             "title": "EV Map",
             "img": "./resources/ev-map.webp",
 			"color": "mg-kinda-purple",
-			"dates": "2017 - 2018",
+			"dates": "2016 - 2017",
 			"description": "",
 			"images": [],
             "link": "#"
         }
     ]
-}
+}	
 /*var projects = {
 	"projects": [
 		{
@@ -129,19 +129,15 @@ if (work.jobs.length > 0) {
 
 
 for (var i = 0; i < numProjects; i++) {
-	$("#projects").append(HTMLprojectStart);
+	var formattedProjectStart = HTMLprojectStart.replace("%color%", projects.projects[i].color);
+	
+	$("#projects .mg-cv-card-container").append(formattedProjectStart);
 
 	var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
-	var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
-	var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
+	var formattedBottomContainer = HTMLprojectBottomContainer.replace("%date%", projects.projects[i].dates).replace("%desc%", projects.projects[i].description);
 
-	for (img in projects.projects[i].images) {
-		var formattedProjectImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[img]);
-		$(".project-entry:last").append(formattedProjectImage);
-	}
 	$(".project-entry:last").append(formattedProjectTitle);
-	$(".project-entry:last").append(formattedProjectDates);
-	$(".project-entry:last").append(formattedProjectDescription);
+	$(".project-entry:last").append(formattedBottomContainer);
 }
 
 

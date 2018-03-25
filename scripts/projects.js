@@ -1,28 +1,39 @@
-
 var projects = {
     "projects": [
         {
-            "title": "Tesla Portugal",
-            "img": "./resources/tesla-logo-big.png",
-            "color": "mg-green",
-            "link": "https://teslaportugal.blogspot.com"
-        },
-        {
             "title": "Chess Mate",
             "img": "./chess/Wallpaper-big.png",
-            "color": "mg-almost-black",
+			"color": "mg-almost-black",
+			"dates": "2017 - 2018",
+			"description": "",
+			"images": [],
             "link": "https://esteveste.github.io/Chess_Google_Assistant_Contest"
         },
-         {
+        {
             "title": "Fuchsia Web Demo",
             "img": "",
             "color": "mg-probably-red",
+            "dates": "2018 - present",
+			"description": "Small Web Demo of the new Google OS project",
+			"images": [],
             "link": "https://mgoulao.github.io/fuchsia/"
+        },
+        {
+            "title": "Tesla Portugal",
+            "img": "./resources/tesla-logo-big.png",
+			"color": "mg-green",
+			"dates": "2015 - 2017",
+			"description": "",
+			"images": [],
+            "link": "https://teslaportugal.blogspot.com"
         },
         {
             "title": "EV Map",
             "img": "./resources/ev-map.webp",
-            "color": "mg-kinda-purple",
+			"color": "mg-kinda-purple",
+			"dates": "2016 - 2017",
+			"description": "",
+			"images": [],
             "link": "#"
         }
     ]

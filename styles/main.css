@@ -1,15 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=EB+Garamond|Playfair+Display|Roboto');
 
+:root {
+	--cv-grid-columns: 1fr 1fr 1fr;
+	--cv-auto-rows: 180px;
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    vertical-align: baseline;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    outline: none;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	outline: none;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 
 body {
@@ -68,7 +73,7 @@ header {
 }
 
 .mg-header-content {
-	background: linear-gradient(to right, #fff 0,#02b3e4 50%, #02ccba 100%);
+	background: linear-gradient(to right, #fff 0, #02b3e4 50%, #02ccba 100%);
 	width: 100%;
 	height: 66px;
 	-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 69%);
@@ -304,11 +309,61 @@ footer span {
 	background-color: rgba(255, 84, 131, .8);
 }
 
+.mg-its-teal {
+	background: rgba(0, 137, 123, 0.8);
+}
+
+.mg-lime-the-fruit {
+	background-color: rgba(205, 220, 57, 0.8);
+}
+
+.mg-cyan-notblue {
+	background-color: rgba(0, 188, 212, 0.8);
+}
+
 .mg-loader {
 	display: block;
 	height: 120px;
 	width: 100px;
 	margin: 20px auto;
+}
+
+.welcome-message {
+	margin-top: 12px;
+}
+
+.mg-cv-card-container {
+	width: 100%;
+	display: grid;
+	grid-template-columns: var(--cv-grid-columns);
+	grid-auto-rows: var(--cv-auto-rows);
+	grid-gap: 32px;
+}
+
+#education .mg-cv-card {
+	margin: 16px auto;
+	border-top: 20px solid #2E7D32;
+}
+
+.mg-cv-card {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-radius: 16px;
+	box-shadow: 1px 2px 9px 0px rgba(46, 61, 73, .3);
+}
+
+.mg-cv-card div, .mg-cv-card p {
+	color: white;
+}
+
+.mg-project-title {
+	font-size: 26px;
+}
+
+.mg-card-bottom-container {
+	position: absolute;
+    bottom: 16px;
 }
 
 /* Loader Spinner */
@@ -326,7 +381,6 @@ footer span {
 	margin: auto;
 	width: 100px;
 	height: 100px;
-	
 }
 
 .circular {
@@ -406,6 +460,10 @@ footer span {
 }
 
 @media (max-width: 850px) {
+	:root {
+		--cv-grid-columns: 1fr;
+		--cv-auto-rows: 190px;
+	}
 	.mg-hamburguer {
 		display: block;
 	}
