@@ -34,6 +34,7 @@ function getWeekDay(d) {
     var days = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
     return days[d];
 }
+
 $(document).ready(function () {
     var navbarTime = $("#navbar_time");
     var navbar = $(".navbar");
@@ -228,7 +229,7 @@ $(document).ready(function () {
         return Math.round(this * (1 / nTo)) * nTo;
     }
 
-    console.log("Max", homeMax);
+    //Home Drag
     home.draggable({
         axis: "y",
         scroll: false,
@@ -250,6 +251,7 @@ $(document).ready(function () {
         }
     });
 
+    //App History Drag
     appHistory.draggable({
         axis: "y",
         scroll: false,
@@ -258,7 +260,10 @@ $(document).ready(function () {
             if (ui.position.top > appHistoryslideHeight + 50) {
                 home.css({ "opacity": 0 });
                 statusBar.css({ "opacity": 0 });
+                home.css({ "z-index": -1 });
             } else {
+                home.css({ "z-index": 1 });
+                home.show();
                 home.css({ "opacity": 1 });
                 statusBar.css({ "opacity": 1 });
             }
@@ -266,7 +271,8 @@ $(document).ready(function () {
             if (ui.position.top < appHistoryMax) ui.position.top = appHistoryMax;
         },
         stop: function (event, ui) {
-            if (ui.position.top < appHistoryslideHeight + 120) {
+            if (ui.position.top < appHistoryslideHeight + 220) {
+                home.css({ "z-index": 1 });
                 home.css({ "opacity": 1 });
                 statusBar.css({ "opacity": 1 });
 
@@ -311,7 +317,7 @@ $(document).ready(function () {
         geocoder.geocode({ 'latLng': latlng }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 console.log(results)
-                var location = results[13].formatted_address;
+                var location = results[4].formatted_address;
                 statusLocation.text("in " + location);
             } else {
                 alert("Geocoder failed due to: " + status);
