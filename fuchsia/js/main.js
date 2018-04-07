@@ -82,6 +82,7 @@ $(document).ready(function () {
     console.log("Max App", appHistory.height());
     var appHistoryMax = appHistoryslideHeight;
 
+    // Fix Viewport Height caused by the keyboard
     let viewheight = $(window).height();
     let viewwidth = $(window).width();
     let viewport = document.querySelector("meta[name=viewport]");

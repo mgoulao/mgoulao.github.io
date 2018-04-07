@@ -305,7 +305,7 @@ button {
     height: 50px;
     background: #fff;
     border-radius: 50%;
-    padding: 8px;
+    padding: 2px;
     object-fit: cover;
     cursor: pointer;
 }
@@ -626,7 +626,7 @@ button {
     left: 0;
     width: 100%;
     height: calc(100% - 40px);
-    z-index: 1;
+    z-index: 3;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
 }
@@ -701,8 +701,9 @@ button {
 
 .app_container h6 {
     height: 15%;
-    color: #fff;
-    font-size: 16px;
+    color: #E0E0E0;
+    font-weight: 600;
+    font-size: 14px;
     margin: 0;
     padding: 2px 6px;
     text-transform: uppercase;
@@ -725,7 +726,7 @@ button {
     transform: translate(-50%, -50%);
     width: 50px;
     height: 50px;
-    background-color: #03a9f4;
+    background-color: #fd3f92;
     border-radius: 50%;
 }
 
