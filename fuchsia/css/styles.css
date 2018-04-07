@@ -160,10 +160,10 @@ body {
 
 #lockscreen {
     position: absolute;
-    display: none;
+    display: block;
     width: 100%;
     height: 100%;
-    z-index: 99;
+    z-index: 100;
     background: #757575;
     background-image: url("../resources/lockscreen.jpg");
     background-size: cover;
@@ -528,8 +528,28 @@ button {
 .search_input {
     color: #777777;
     font-size: 18px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 600;
     border: none;
     margin-left: 32px;
+    display: none;
+}
+
+.search_input.active {
+    display: block;
+}
+
+#dummy_input {
+    color: #777777;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    margin-left: 32px;
+    display: none;
+}
+
+#dummy_input.active {
+    display: block;
 }
 
 .google_logo {
@@ -607,6 +627,8 @@ button {
     width: 100%;
     height: calc(100% - 40px);
     z-index: 1;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
 }
 
 #opened_app.active {
@@ -621,6 +643,8 @@ button {
     height: 30px;
     font-size: 20px;
     padding-top: 5px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
 }
 
 #app_content {
@@ -681,6 +705,7 @@ button {
     font-size: 16px;
     margin: 0;
     padding: 2px 6px;
+    text-transform: uppercase;
 }
 
 .history_card {

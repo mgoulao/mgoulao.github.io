@@ -59,7 +59,9 @@ $(document).ready(function () {
     var statusUserImage = $(".fuchsia");
     var statusLocation = $(".status_location");
     var signOutButton = $(".signout");
+    var googleSearch = $(".google_search");
     var searchInput = $(".search_input");
+    var dummyInput = $("#dummy_input");
     var card = $(".card");
     var openedApp = $("#opened_app");
     var openedAppContent = $("#app_content");
@@ -109,11 +111,14 @@ $(document).ready(function () {
         }
     });
 
-    searchInput.click(function () {
-        event.stopPropagation();
+    googleSearch.click(activateGoogleSearch);
+
+    function activateGoogleSearch() {
         home.css({ "top": homeMax + "px" });
         appHistory.css({ "transform": "translateY(" + homeMax + "px)" });
-    });
+        showSearchInput();
+        searchInput.focus();
+    }
 
     lockOptionsButton.click(function () {
         lockOptionsButton.hide();
@@ -222,8 +227,19 @@ $(document).ready(function () {
         navbar.hide();
     }
 
+    function hideSearchInput() {
+        dummyInput.addClass("active");
+        searchInput.removeClass("active");
+    }
+
+    function showSearchInput() {
+        dummyInput.removeClass("active");
+        searchInput.addClass("active");
+    }
+
     card.click(function (e) {
         console.log("Click Card: ", e.currentTarget.id);
+        console.log("TARGET:", e);
         var cardId = e.currentTarget.id;
         openedAppObj = new App(cardId);
     });
@@ -247,6 +263,9 @@ $(document).ready(function () {
         drag: function (event, ui) {
             if (ui.position.top < 0) {
                 appHistory.css({ "transform": "translateY(" + ui.position.top + "px)" });
+                showSearchInput();
+            } else {
+                hideSearchInput();
             }
             if (ui.position.top > homeMin) ui.position.top = homeMin;
             if (ui.position.top < homeMax) ui.position.top = homeMax;
@@ -254,7 +273,9 @@ $(document).ready(function () {
         stop: function (event, ui) {
             var topPositionRounded = (ui.position.top).roundTo(slideHeight);
             appHistory.css({ "transform": "translateY(" + topPositionRounded + "px)" });
-
+            if (topPositionRounded == 0) {
+                hideSearchInput();
+            }
             $(this).animate({
                 'top': topPositionRounded
             });
@@ -324,7 +345,7 @@ $(document).ready(function () {
     });
 
     //Get User Location
-    function codeLatLng(lat, lng) {
+    /*function codeLatLng(lat, lng) {
         var geocoder = new google.maps.Geocoder();
         var latlng = new google.maps.LatLng(lat, lng);
         geocoder.geocode({ 'latLng': latlng }, function (results, status) {
@@ -351,7 +372,7 @@ $(document).ready(function () {
     }
 
     navigator.geolocation.getCurrentPosition(success, error);
-
+    */
     var appData = {
         "inbox": {
             "title": "Inbox",
