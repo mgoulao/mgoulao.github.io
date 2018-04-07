@@ -138,7 +138,7 @@ $(document).ready(function () {
 
     });
 
-    navbarTime.click(function () {
+    /*navbarTime.click(function () {
         event.stopPropagation();
         console.log("click time");
         if (menu.hasClass("active")) {
@@ -146,7 +146,7 @@ $(document).ready(function () {
         } else {
             menu.addClass("active");
         }
-    });
+    });*/
 
     menu.click(function () {
         event.stopPropagation();
@@ -176,9 +176,13 @@ $(document).ready(function () {
     });
 
     homeButton.click(function () {
-        openedAppObj.close();
+        if (openedAppObj != undefined) {
+            openedAppObj.close();
+        }
         showHome();
         showAppHistory();
+        menu.removeClass("active");
+        showStatusBar();
     });
 
     function hideHome() {
@@ -191,7 +195,13 @@ $(document).ready(function () {
         event.stopPropagation();
         home.css({ "top": "0px" });
         home.css({ "transform": "translateY(0px)" });
+        home.css({ "z-index": "1" });
+        home.css({ "opacity": 1 });
         hideNavBar();
+    }
+
+    function showStatusBar() {
+        statusBar.css({ "opacity": 1 });
     }
 
     function hideAppHistory() {
@@ -261,11 +271,13 @@ $(document).ready(function () {
                 home.css({ "opacity": 0 });
                 statusBar.css({ "opacity": 0 });
                 home.css({ "z-index": -1 });
+                showNavBar();
             } else {
                 home.css({ "z-index": 1 });
                 home.show();
                 home.css({ "opacity": 1 });
                 statusBar.css({ "opacity": 1 });
+                hideNavBar();
             }
             if (ui.position.top > appHistoryMin) ui.position.top = appHistoryMin;
             if (ui.position.top < appHistoryMax) ui.position.top = appHistoryMax;
@@ -275,6 +287,7 @@ $(document).ready(function () {
                 home.css({ "z-index": 1 });
                 home.css({ "opacity": 1 });
                 statusBar.css({ "opacity": 1 });
+                navbar.hide();
 
                 var topPositionRounded = (ui.position.top).roundTo(-appHistoryslideHeight);
                 $(this).animate({

@@ -43,6 +43,17 @@ body {
 
 .navbar {
     overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 99;
+}
+
+.navbar_2 {
+    overflow: hidden;
     background-color: rgba(0, 0, 0, 0.9);
     position: fixed;
     bottom: 0;
@@ -62,6 +73,18 @@ body {
 }
 
 .navbar #home_button {
+    width: 18px;
+    height: 18px;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    margin: 10px auto;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.navbar_2 #home_button {
     float: left;
     display: block;
     color: #f2f2f2;
@@ -72,7 +95,24 @@ body {
     cursor: pointer;
 }
 
-#navbar_time {
+.navbar #home_button svg {
+    width: 18px;
+    height: 18px;
+}
+
+.navbar #navbar_time {
+    height: 40px;
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    align-self: center;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.navbar_2 #navbar_time {
     height: 50px;
     float: right;
     display: block;
@@ -87,6 +127,25 @@ body {
 #navbar_time:hover {
     background: rgba(255, 255, 255, 0.2);
     color: #fff;
+}
+
+.navbar #navbar_battery {
+    height: 40px;
+    float: right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    align-self: center;
+    padding: 12px;
+    font-size: 16px;
+    display: inline-flex;
+    cursor: pointer;
+}
+
+.navbar #navbar_battery i {
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
 }
 
 .navbar a:hover {
@@ -135,8 +194,8 @@ button {
     position: absolute;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-12px,-12px);
-    transform: translate(-12px,-12px);
+    -webkit-transform: translate(-12px, -12px);
+    transform: translate(-12px, -12px);
     line-height: 24px;
     width: 24px;
 }
@@ -144,6 +203,7 @@ button {
 .text_round_button {
     border-radius: 50px;
     padding: 0 18px;
+    text-align: center;
 }
 
 #lock_options_button {
@@ -297,6 +357,12 @@ button {
     box-shadow: 1px 2px 10px 2px rgba(0, 0, 0, 0.3);
     border: 1px solid #BDBDBD;
     z-index: 99;
+    bottom: 40px;
+    margin: auto;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    z-index: 99;
+    background: #fff;
 }
 
 #menu_2 {
@@ -431,8 +497,8 @@ button {
     display: block;
     background: #eceff1;
     border-radius: 5px;
-    height: 100%;
     width: var(--home-width);
+    height: 86%;
     left: 0;
     right: 0;
     margin: 65vh auto 50px;
@@ -445,6 +511,10 @@ button {
     display: block;
 }
 
+.apps {
+    margin-top: 18px;
+}
+
 .google_search {
     display: flex;
     background: #fff;
@@ -453,7 +523,6 @@ button {
     width: 100%;
     align-self: center;
     padding: 0 32px;
-    margin-bottom: 18px;
 }
 
 .search_input {
@@ -536,7 +605,7 @@ button {
     top: 0;
     left: 0;
     width: 100%;
-    height: calc(100% - 50px);
+    height: calc(100% - 40px);
     z-index: 1;
 }
 
@@ -552,7 +621,6 @@ button {
     height: 30px;
     font-size: 20px;
     padding-top: 5px;
-
 }
 
 #app_content {
@@ -572,7 +640,7 @@ button {
     right: 0;
     top: -100vh;
     margin: auto;
-    padding: 50px 0 50px 0 ;
+    padding: 50px 0 50px 0;
     transition: transform 0.1s ease-in;
     z-index: 1;
 }
@@ -621,6 +689,7 @@ button {
     height: 85%;
     background: #fff;
     border-radius: 4px;
+    border-top: 5px solid #ff9800;
 }
 
 .loader {
@@ -670,13 +739,17 @@ button {
         --app-history-width: 90%;
         --app-history-grid-columns: auto;
         --small-cards-rows: 150px;
-    --big-cards-rows: 150px;
+        --big-cards-rows: 150px;
     }
     #app_history {
         margin: 0 auto;
     }
     .small_cards {
         width: 100%;
+    }
+    .menu_option .mdl-slider__container {
+        width: 150px;
+        margin: 0;
     }
 }
 
