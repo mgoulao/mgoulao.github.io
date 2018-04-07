@@ -82,6 +82,11 @@ $(document).ready(function () {
     console.log("Max App", appHistory.height());
     var appHistoryMax = appHistoryslideHeight;
 
+    let viewheight = $(window).height();
+    let viewwidth = $(window).width();
+    let viewport = document.querySelector("meta[name=viewport]");
+    viewport.setAttribute("content", "height=" + viewheight + "px, width=" + viewwidth + "px, initial-scale=1.0");
+
     //Date 
     var today = new Date();
     var day = today.getDay();
