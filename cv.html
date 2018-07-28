@@ -8,27 +8,27 @@
 			window.location.protocol = "https:"
 		}
 	</script>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="description" content="Hi I'm Manuel. Thinking differently">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-		<title>CV - Manuel Goulão - The Best</title>
-		<!-- Favicon to work in all desktop browsers: -->
-		<link rel="shortcut icon" sizes="192x192" href="resources/icon.png" type="image/png">
-		<meta name="theme-color" content="#004D40">
-	
-		<!-- Open Graph data -->
-		<meta property="og:type" content="website">
-		<meta property="og:site_name" content="THE BEST - Manuel Goulão">
-		<meta property="og:image" content="http://tecnico.ulisboa.pt/img/tecnico_share.png">
-		<meta property="og:url" content="https://mgoulao.github.io">
-		<!-- Twitter Card data -->
-		<meta name="twitter:card" content="summary">
-		<meta name="twitter:site" content="@mgoulao1">
-		<meta name="twitter:title" content="Manuel Goulão - The Best">
-		<meta name="twitter:image" content="http://tecnico.ulisboa.pt/img/tecnico_share.png">
-		<meta name="twitter:url" content="https://mgoulao.github.io">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Hi I'm Manuel. Thinking differently">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>CV - Manuel Goulão - The Best</title>
+	<!-- Favicon to work in all desktop browsers: -->
+	<link rel="shortcut icon" sizes="192x192" href="resources/icon.png" type="image/png">
+	<meta name="theme-color" content="#004D40">
+
+	<!-- Open Graph data -->
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="THE BEST - Manuel Goulão">
+	<meta property="og:image" content="http://tecnico.ulisboa.pt/img/tecnico_share.png">
+	<meta property="og:url" content="https://mgoulao.github.io">
+	<!-- Twitter Card data -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@mgoulao1">
+	<meta name="twitter:title" content="Manuel Goulão - The Best">
+	<meta name="twitter:image" content="http://tecnico.ulisboa.pt/img/tecnico_share.png">
+	<meta name="twitter:url" content="https://mgoulao.github.io">
 
 	<link rel="stylesheet" href="styles/main.css"></link>
 	<style type="text/css">
@@ -38,8 +38,25 @@
 			background: #eeeeee;
 		}
 
+		#back_link {
+			position: absolute;
+			top: 18px;
+			left: 18px;
+		}
+
+		#back_button {
+			width: 48px;
+			height: 48px;
+			background: rgba(0, 0, 0, 0);
+			border-radius: 50px;
+		}
+
+		#back_button:hover {
+			background: rgba(0, 0, 0, 0.1);
+		}
+
 		.mg-content {
-			padding-top: 40px;
+			padding: 40px 0;
 			width: 100%;
 			font-family: sans-serif;
 			color: rgba(0, 0, 0, 0.85);
@@ -62,7 +79,7 @@
 			flex-direction: column;
 			align-items: center
 		}
-		
+
 		#header img {
 			width: 150px;
 			height: 150px;
@@ -88,7 +105,8 @@
 			font-size: 18px;
 		}
 
-		#education, #projects {
+		#education,
+		#projects {
 			margin-top: 46px;
 		}
 
@@ -151,7 +169,14 @@
 </head>
 
 <body>
-	<header></header>
+
+	<a id="back_link" href="/">
+		<button id="back_button">
+			<svg style="width:24px;height:24px" viewBox="0 0 24 24">
+				<path fill="#000000" d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+			</svg>
+		</button>
+	</a>
 
 	<div class="mg-content">
 		<div id="main">
@@ -170,17 +195,10 @@
 				<h2>Projects</h2>
 				<div class="mg-cv-card-container"></div>
 			</div>
-			<div class="mg-linkedin">
-				<div class="LI-profile-badge" data-version="v1" data-size="medium" data-locale="pt_BR" data-type="vertical" data-theme="dark"
-				 data-vanity="manuel-goulão">
-					<a class="LI-simple-link" href='https://pt.linkedin.com/in/manuel-goul%C3%A3o?trk=profile-badge'>Manuel Goulão</a>
-				</div>
-			</div>
 		</div>
 	</div>
 
 	<!-- Scripts  -->
-	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="scripts/helper.js"></script>
 
