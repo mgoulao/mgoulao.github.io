@@ -19,6 +19,7 @@
 
 body {
     background: #000 url(../resources/bg.jpg);
+    background-attachment: fixed;
 }
 
 /* Animation properties */
