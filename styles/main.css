@@ -313,7 +313,7 @@ body {
     }
     .card {
         width: calc(100vw - 64px);
-        margin: 10% 30px 14px;
+        margin: 10% 32px 14px;
     }
     #more_menu {
         width: 100%;

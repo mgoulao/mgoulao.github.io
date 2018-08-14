@@ -77,11 +77,11 @@ $(document).ready(function () {
 	var obfuscator = $(".obfuscator");
 	var card = $(".cards-container .card");
 	var projectCard = $("#project");
-	var slides = $('#slider ul').children().length;
+	var slides = $('#slider ul').children().length - 1;
 	var bodyWidth = $("body").width();
-	var slideWidth = $('#slider').width();
+	var slideWidth = $('#slider').width() - ($("#slider").width() / projectsList.length);
+
 	if (bodyWidth < 600) {
-		slides--;
 		slideWidth = $("body").width() * slides;
 	}
 
@@ -127,7 +127,7 @@ $(document).ready(function () {
 				'left': leftPositionRounded
 			});
 			currentSlide = -leftPositionRounded / (slideWidth / slides)
-			console.log(leftPositionRounded / (slideWidth / slides));
+			//console.log(leftPositionRounded / (slideWidth / slides));
 			if (!(currentSlide.toString() in dicWithColors)) {
 				var listOfColors = colors[numberOfSlides % colors.length];
 				dicWithColors[leftPositionRounded.toString()] = listOfColors;
