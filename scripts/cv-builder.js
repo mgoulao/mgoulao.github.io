@@ -1,5 +1,5 @@
 var bio = {
-	"name": "Manuel Filipe Silva Goulão",
+	"name": "Manuel Goulão",
 	"role": "Student at Instituto Superior Técnico",
 	"contacts": {
 		"mobile": "960332864",

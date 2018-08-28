@@ -10,40 +10,113 @@
 	</script>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="description" content="The blog of Manuel Goulão. Discover my projects, my books and my thoughts.">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Hi I'm Manuel. Thinking differently">
+	<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
 
-	<title>MG Notes</title>
-
-	<link rel="icon" sizes="192x192" href="resources/icon.png">
+	<title>CV - Manuel Goulão - The Best</title>
+	<!-- Favicon to work in all desktop browsers: -->
+	<link rel="shortcut icon" sizes="192x192" href="resources/icon.png" type="image/png">
 	<meta name="theme-color" content="#004D40">
+
+	<!-- Open Graph data -->
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="THE BEST - Manuel Goulão">
+	<meta property="og:image" content="http://tecnico.ulisboa.pt/img/tecnico_share.png">
+	<meta property="og:url" content="https://mgoulao.github.io">
+	<!-- Twitter Card data -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@mgoulao1">
+	<meta name="twitter:title" content="Manuel Goulão - The Best">
+	<meta name="twitter:image" content="http://tecnico.ulisboa.pt/img/tecnico_share.png">
+	<meta name="twitter:url" content="https://mgoulao.github.io">
 
 	<link rel="stylesheet" href="styles/main.css"></link>
 	<style type="text/css">
+		body {
+			overflow: auto;
+			width: 100%;
+			background: #eeeeee;
+		}
+
+		#back_link {
+			position: absolute;
+			top: 18px;
+			left: 18px;
+		}
+
+		#back_button {
+			width: 48px;
+			height: 48px;
+			background: rgba(0, 0, 0, 0);
+			border-radius: 50px;
+		}
+
+		#back_button:hover {
+			background: rgba(0, 0, 0, 0.1);
+		}
+
 		.mg-content {
-			padding-top: 40px;
+			padding: 40px 0;
 			width: 100%;
 			font-family: sans-serif;
 			color: rgba(0, 0, 0, 0.85);
 		}
 
-		#header {
-			padding: 50px 16px 16px;
-			background: linear-gradient(150deg, #00695C 0%, #212121 80%);
-			color: #fff;
-			text-align: center;
-		}
-
-		#header img {
-			border-radius: 50%;
-			width: 150px;
-			height: 150px;
+		#main {
+			width: 800px;
+			margin: auto;
 		}
 
 		#mg-cv-about,
 		#projects,
 		#education {
-			padding: 16px;
+			padding: 32px;
+			border-radius: 16px;
+		}
+
+		#header {
+			display: flex;
+			flex-direction: column;
+			align-items: center
+		}
+
+		#header img {
+			width: 150px;
+			height: 150px;
+			border-radius: 50%;
+			border: 4px solid #fff;
+			margin-bottom: -75px;
+			z-index: 2;
+		}
+
+		#mg-cv-about {
+			background: #fff;
+			text-align: center;
+			padding-top: 75px;
+		}
+
+		#mg-cv-about h1 {
+			margin-top: 12px;
+			margin-bottom: 6px;
+			font-size: 26px;
+		}
+
+		#mg-cv-about span {
+			font-size: 18px;
+		}
+
+		#education,
+		#projects {
+			margin-top: 46px;
+		}
+
+		#projects {
+			background: #fff;
+		}
+
+		#education {
+			background: #02b3e4;
+			color: #fff;
 		}
 
 		#projects h2,
@@ -51,7 +124,6 @@
 		#education h3 {
 			padding-bottom: 6px;
 			margin-bottom: 6px;
-			color: #212121;
 		}
 
 		.project-entry,
@@ -62,7 +134,7 @@
 		#projects .project-entry a,
 		#education .education-entry a {
 			font-size: 22px;
-			color: rgba(0, 0, 0, 0.85);
+			color: #fff;
 			text-decoration: none;
 			font-weight: 600
 		}
@@ -93,54 +165,25 @@
 			background-color: #303336;
 			padding: initial;
 		}
+		@media screen and (max-width: 800px) {
+			#main {
+				width: 100%;
+				padding: 0 10px;
+			}
+		}
 	</style>
 </head>
 
 <body>
-	<header>
-		<div class="mg-logo-border">
-			<div class="mg-logo-container">
-				<a href="/">
-					<div class="mg-logo"></div>
-				</a>
-			</div>
-		</div>
-		<div class="mg-header-content">
-			<ul>
-				<a href="projects.html">
-					<li>Projects</li>
-				</a>
-				<a href="">
-					<li>CV</li>
-				</a>
-				<a href="about.html">
-					<li>About</li>
-				</a>
-			</ul>
-			<div class="mg-hamburguer">
-				<svg viewBox="0 0 24 24">
-					<path fill="#fff" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
-				</svg>
-			</div>
-		</div>
-	</header>
-	<div class="mg-drawer">
-		<ul>
-			<a href="/">
-				<li>Home</li>
-			</a>
-			<a href="projects.html">
-				<li>Projects</li>
-			</a>
-			<a href="">
-				<li>CV</li>
-			</a>
-			<a href="about.html">
-				<li>About</li>
-			</a>
-		</ul>
-	</div>
-	<div class="mg-ofuscator"></div>
+
+	<a id="back_link" href="/">
+		<button id="back_button">
+			<svg style="width:24px;height:24px" viewBox="0 0 24 24">
+				<path fill="#000000" d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+			</svg>
+		</button>
+	</a>
+
 	<div class="mg-content">
 		<div id="main">
 			<div id="header" class="center-content clear-fix">
@@ -158,68 +201,16 @@
 				<h2>Projects</h2>
 				<div class="mg-cv-card-container"></div>
 			</div>
-			<div class="mg-linkedin">
-				<div class="LI-profile-badge" data-version="v1" data-size="medium" data-locale="pt_BR" data-type="vertical" data-theme="dark"
-				 data-vanity="manuel-goulão">
-					<a class="LI-simple-link" href='https://pt.linkedin.com/in/manuel-goul%C3%A3o?trk=profile-badge'>Manuel Goulão</a>
-				</div>
-			</div>
 		</div>
-		<footer>
-			<ul>
-				<li>
-					<a href="https://twitter.com/mgoulao1">
-						<svg class="icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-							<path d="M97 20.7c-3.5 1.5-7.2 2.6-11.1 3 4-2.4 7-6.2 8.5-10.7-3.7 2.2-7.9 3.8-12.2 4.7-3.5-3.7-8.5-6.1-14.1-6.1-10.7 0-19.3 8.6-19.3 19.3 0 1.5.2 3 .5 4.4-16-.8-30.2-8.5-39.7-20.1C7.9 18 7 21.4 7 24.9c0 6.7 3.4 12.6 8.6 16.1-3.2-.1-6.1-1-8.7-2.4v.2c0 9.3 6.6 17.1 15.5 18.9-1.6.4-3.3.7-5.1.7-1.2 0-2.5-.1-3.6-.3 2.5 7.7 9.6 13.2 18 13.4-6.6 5.2-14.9 8.3-24 8.3-1.6 0-3.1-.1-4.6-.3 8.5 5.5 18.7 8.7 29.6 8.7 35.3-.2 54.7-29.5 54.7-55 0-.8 0-1.7-.1-2.5 3.8-2.7 7.1-6.1 9.7-10"></path>
-						</svg>
-						<span>Twitter</span>
-					</a>
-				</li>
-				<li>
-					<a href="https://github.com/mgoulao">
-						<svg class="icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-							<path d="M50.5 3.8C25 3.8 4.3 24.5 4.3 50.1c0 20.4 13.3 37.8 31.6 43.9 2.3.4 3.2-1 3.2-2.2 0-1.1 0-4.7-.1-8.6-12.9 2.8-15.6-5.5-15.6-5.5-2.1-5.3-5.1-6.8-5.1-6.8-4.2-2.9.3-2.8.3-2.8 4.6.3 7.1 4.8 7.1 4.8 4.1 7.1 10.8 5 13.5 3.8.4-3 1.6-5 2.9-6.2C31.8 69.3 21 65.4 21 47.6c0-5 1.8-9.2 4.8-12.4-.5-1.2-2.1-5.9.4-12.2 0 0 3.9-1.2 12.7 4.7 3.7-1 7.6-1.5 11.6-1.6 3.9 0 7.9.5 11.6 1.6 8.8-6 12.7-4.7 12.7-4.7 2.5 6.4.9 11.1.5 12.2 3 3.2 4.8 7.4 4.8 12.4 0 17.8-10.8 21.7-21.1 22.8 1.7 1.4 3.1 4.3 3.1 8.6 0 6.2-.1 11.2-.1 12.7 0 1.2.8 2.7 3.2 2.2C83.6 87.8 96.8 70.4 96.8 50c0-25.5-20.7-46.2-46.3-46.2zM21.6 69.7c-.1.2-.5.3-.8.1-.3-.2-.5-.5-.4-.7.1-.2.5-.3.8-.1.3.1.5.5.4.7zm2.3 2c-.2.2-.7.1-.9-.2-.3-.3-.4-.8-.1-1 .2-.2.6-.1.9.2.2.4.3.8.1 1zm1.5 2.6c-.3.2-.7 0-1-.4-.3-.4-.3-.9 0-1.1.3-.2.7 0 1 .4.3.4.3.9 0 1.1zm2.7 3c-.3.3-.8.2-1.2-.2-.4-.4-.5-.9-.3-1.2.3-.3.8-.2 1.2.2.4.4.5 1 .3 1.2zm3.4 1c-.1.4-.6.5-1.2.4-.5-.2-.9-.6-.8-.9.1-.4.6-.5 1.2-.4.5.2.9.6.8.9zm3.9.5c0 .4-.4.7-1 .7s-1-.3-1-.7c0-.4.4-.7 1-.7.5 0 1 .3 1 .7zm3.8-.2c.1.4-.3.8-.9.9-.5.1-1-.1-1.1-.5-.1-.4.3-.8.9-.9.5-.1 1 .2 1.1.5z"></path>
-						</svg>
-						<span>GitHub</span>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<svg class="icon" viewBox="1 2.5 24 17">
-							<path fill="#000000" d="M23,11H21V9H19V11H17V13H19V15H21V13H23M8,11V13.4H12C11.8,14.4 10.8,16.4 8,16.4C5.6,16.4 3.7,14.4 3.7,12C3.7,9.6 5.6,7.6 8,7.6C9.4,7.6 10.3,8.2 10.8,8.7L12.7,6.9C11.5,5.7 9.9,5 8,5C4.1,5 1,8.1 1,12C1,15.9 4.1,19 8,19C12,19 14.7,16.2 14.7,12.2C14.7,11.7 14.7,11.4 14.6,11H8Z"
-							/>
-						</svg>
-						<span>Google+</span>
-					</a>
-				</li>
-			</ul>
-			<div class="mg-footer-about">
-				<img src="https://assets.hole19golf.com/users/avatars/000/708/092/thumb/bab510e5579907d21318109512e78bc462738876.jpeg">
-				<h4>The blog of Manuel Goulão. Discover my projects, my books and my thoughts.</h4>
-			</div>
-		</footer>
 	</div>
 
 	<!-- Scripts  -->
-	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="scripts/helper.js"></script>
 
-	<!--
-	  The next line tells the browser where to download the JavaScript file you'll be
-	  writing. In resumeBuilder.js, you'll be writing code that builds the resume
-	  dynamically when this website, index.html, is opened.
-	-->
+
 	<script src="scripts/cv-builder.js"></script>
 	<script>
-		// Notice how all of a sudden there's JavaScript inside this HTML
-		// document? You can write JavaScript between <script> tags. At the end of your
-		// JavaScript, don't forget the closing script tag with the slash (/).
-		// Also, this is a JavaScript style comment. You can comment in JavaScript with:
-		//   two slashes for all following characters on a single line, or
-		/*
-				an opening and closing set of slash asterisks for block comments.
-		*/
 		if (document.getElementsByClassName('flex-item').length === 0) {
 			document.getElementById('topContacts').style.display = 'none';
 		}

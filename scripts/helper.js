@@ -46,7 +46,7 @@ var HTMLonlineClasses = '<h3>Online Classes</h3>';
 var HTMLonlineTitle = '<a href="#">%data%';
 var HTMLonlineSchool = ' - %data%</a>';
 var HTMLonlineDates = '<div class="date-text">%data%</div>';
-var HTMLonlineURL = '<br><a href="#" style="font-size:16px;color:#0D47A1">%data%</a>';
+var HTMLonlineURL = '<br><a href="#" style="font-size:16px">%data%</a>';
 
 var HTMLprojectCard = '<div class="mg-project %data%" style="background-image: url(%img%);">%content%</div>';
 var HTMLprojectLink = '<a href="%data%" target="_blank">%content%</a>';
