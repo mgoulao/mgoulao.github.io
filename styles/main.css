@@ -313,37 +313,10 @@ body {
     }
     .card {
         width: calc(100vw - 64px);
-        margin: 10% 30px 14px;
+        margin: 10% 32px 14px;
     }
     #more_menu {
         width: 100%;
     }
 }
 
-@media screen and (max-width: 813px) and (orientation:landscape) {
-    body {
-        overflow-y: auto
-    }
-    #welcome-message {
-        margin: 8px 32px 0;
-        display: flex;
-    }
-    #welcome-message img {
-        width: 40px;
-        height: 40px;
-    }
-    #welcome-message h3 {
-        font-size: 28px;
-        margin: 0 0 0 24px;
-    }
-    .cards-container {
-        overflow: hidden;
-        margin-top: 16px
-    }
-    .card {
-        width: 140px;
-        min-width: 100px;
-        height: 200px;
-        margin: 0 32px 14px;
-    }
-}
