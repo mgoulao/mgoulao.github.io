@@ -77,17 +77,8 @@ $(document).ready(function () {
 	var obfuscator = $(".obfuscator");
 	var card = $(".cards-container .card");
 	var projectCard = $("#project");
-	var slides = $('#slider ul').children().length - 1;
-	var bodyWidth = $("body").width();
-	var slideWidth = $('#slider').width() - ($("#slider").width() / projectsList.length);
 
-	if (bodyWidth < 600) {
-		slideWidth = $("body").width() * slides;
-	}
-
-	var min = 0;
-	var max = -slideWidth;
-	var currentSlide = 0;
+	setupDraggableCards();
 
 	var projectDesktop = {
 		open: (e) => {
@@ -113,6 +104,52 @@ $(document).ready(function () {
 		}
 	};
 
+	
+
+
+	profileImage.click(() => menuMore.open());
+	obfuscator.click(() => {
+		menuMore.close();
+		projectDesktop.close();
+	});
+
+	card.on("click", function (e) {
+		console.log("Click");
+		if (window.innerWidth < 800) {
+			var target = $(e.currentTarget);
+			if (target.hasClass("active")) {
+				target.removeClass("active");
+				cardList.draggable('enable');
+			} else {
+				target.addClass("active");
+				cardList.draggable('disable');
+			}
+		} else {
+			projectDesktop.open(e);
+		}
+		console.log(e);
+	});
+
+});
+
+function setupDraggableCards() {
+	var cardList = $("#slider ul");
+	var card = $(".cards-container .card");
+	var projectCard = $("#project");
+	var slides = $('#slider ul').children().length - 1;
+	var bodyWidth = $("body").width();
+
+	var slideWidth = $('#slider').width() - ($("#slider").width() / projectsList.length);
+
+	if (bodyWidth < 600) {
+		slideWidth = $("body").width() * slides;
+	}
+
+	var min = 0;
+	var max = -slideWidth;
+	var currentSlide = 0;
+
+
 	cardList.draggable({
 		cursor: 'pointer',
 		position: 'unset',
@@ -137,32 +174,7 @@ $(document).ready(function () {
 			$("body").css("background", "linear-gradient(to top right, " + dicWithColors[currentSlide.toString()][0] + ", " + dicWithColors[currentSlide.toString()][1] + ")");
 		}
 	});
-
-
-	profileImage.click(() => menuMore.open());
-	obfuscator.click(() => {
-		menuMore.close();
-		projectDesktop.close();
-	});
-
-	card.on("click", function (e) {
-		if (window.innerWidth < 800) {
-			var target = $(e.currentTarget);
-			if (target.hasClass("active")) {
-				target.removeClass("active");
-				cardList.draggable('enable');
-			} else {
-				target.addClass("active");
-				cardList.draggable('disable');
-			}
-		} else {
-			projectDesktop.open(e);
-		}
-		console.log(e);
-	});
-
-});
-
+}
 
 function createCardList(slideCardsContainer) {
 	for (var i = 0; i < projectsList.length; i++) {
