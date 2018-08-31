@@ -63,17 +63,16 @@ var dicWithColors = {
 
 Number.prototype.roundTo = function(nTo) {
 	nTo = nTo || 10;
-	console.log("nTo: " + nTo + "round " + Math.round(this * (1 / nTo)));
 	return Math.round(this * (1 / nTo)) * nTo;
 };
 
 var windowWidth = window.innerWidth,
 	windowHeight = window.innerHeight;
 
-$(document).ready(function() {
-	var slideCardsContainer = $(".cards-container");
+let viewGap = 112;
 
-	createCardList(slideCardsContainer);
+$(document).ready(function() {
+	createCardList();
 
 	setupDraggableCards();
 
@@ -83,13 +82,15 @@ $(document).ready(function() {
 function handleClicks() {
 	var slideCardsContainer = $(".cards-container"),
 		cardList = $("#slider ul"),
-		profileImage = $(".profile-image"),
-		menu = $("#more_menu"),
 		obfuscator = $(".obfuscator"),
 		card = $(".cards-container .card"),
 		projectCard = $("#project");
 
 	var dragPosition = 0;
+
+	obfuscator.click(() => {
+		projectDesktop.close();
+	});
 
 	var projectDesktop = {
 		open: e => {
@@ -104,29 +105,14 @@ function handleClicks() {
 		}
 	};
 
-	var menuMore = {
-		open: () => {
-			menu.addClass("active");
-			obfuscator.fadeTo("fast", 1, () => obfuscator.show());
-		},
-		close: () => {
-			menu.removeClass("active");
-			obfuscator.fadeTo("fast", 0, () => obfuscator.hide());
-		}
-	};
-
-	profileImage.click(() => menuMore.open());
-	obfuscator.click(() => {
-		menuMore.close();
-		projectDesktop.close();
-	});
-
 	card.on("mousedown", function() {
 		if (slideCardsContainer[0].style["left"] == "") dragPosition = 0;
 		else dragPosition = parseInt(slideCardsContainer[0].style["left"]);
 	});
 
 	card.on("click", function(e) {
+		console.log(e);
+		console.log(parseInt($(e.currentTarget)[0].style["margin-left"]));
 		var currentDragPosition =
 			slideCardsContainer[0].style["left"] == ""
 				? 0
@@ -137,9 +123,16 @@ function handleClicks() {
 				if (target.hasClass("active")) {
 					target.removeClass("active");
 					cardList.draggable("enable");
+					$($(".card")[0]).css("margin-left", viewGap / 2);
 				} else {
 					target.addClass("active");
 					cardList.draggable("disable");
+					if (
+						parseInt($(e.currentTarget)[0].style["margin-left"]) !=
+						viewGap / 2
+					)
+						$($(".card")[0]).css("margin-left", getCardMargin() / 2 + "px");
+					else $($(".card")[0]).css("margin-left", 0);
 				}
 			} else projectDesktop.open(e);
 		}
@@ -157,15 +150,17 @@ function getCardPadding() {
 
 function getCardMargin() {
 	var cards = $(".card");
-	return 2 * parseInt(cards.css("marginLeft"));
+	return 2 * parseInt(cards.css("marginRight"));
 }
 
 function getSliderWidth() {
 	var bodyWidth = $("body").width(),
 		cards = $(".card"),
-		numberOfSlides = $("#slider ul").children().length - 1;
-
-	if (bodyWidth < 600) return $("body").width() * numberOfSlides;
+		numberOfSlides = $("#slider ul").children().length - 1,
+		cardGap = viewGap - 2 * getCardMargin(); // 112 - 2*CardMarginRight
+	console.log(cardGap);
+	if (bodyWidth < 600)
+		return ($("body").width() - getCardMargin() - cardGap) * numberOfSlides;
 	else
 		return (
 			(cards.width() + getCardPadding() + getCardMargin()) * numberOfSlides
@@ -211,8 +206,8 @@ function setupDraggableCards() {
 	});
 }
 
-function createCardList(slideCardsContainer) {
-	let bodyWidth = $("body").width();
+function createCardList() {
+	var slideCardsContainer = $(".cards-container");
 
 	$("body").css(
 		"background",
@@ -254,6 +249,7 @@ function createCardList(slideCardsContainer) {
 				"</li>"
 		);
 	}
+	$($(".card")[0]).css("margin-left", viewGap / 2);
 }
 
 window.addEventListener("orientationchange", function() {

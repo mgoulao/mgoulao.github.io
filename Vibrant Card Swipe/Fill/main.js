@@ -63,7 +63,6 @@ var dicWithColors = {
 
 Number.prototype.roundTo = function(nTo) {
 	nTo = nTo || 10;
-	console.log("nTo: " + nTo + "round " + Math.round(this * (1 / nTo)));
 	return Math.round(this * (1 / nTo)) * nTo;
 };
 
@@ -71,9 +70,7 @@ var windowWidth = window.innerWidth,
 	windowHeight = window.innerHeight;
 
 $(document).ready(function() {
-	var slideCardsContainer = $(".cards-container");
-
-	createCardList(slideCardsContainer);
+	createCardList();
 
 	setupDraggableCards();
 
@@ -83,15 +80,13 @@ $(document).ready(function() {
 function handleClicks() {
 	var slideCardsContainer = $(".cards-container"),
 		cardList = $("#slider ul"),
-		profileImage = $(".profile-image"),
-		menu = $("#more_menu"),
 		obfuscator = $(".obfuscator"),
 		card = $(".cards-container .card"),
 		projectCard = $("#project");
 
 	var dragPosition = 0;
 
-	var projectDesktop = {
+	/* var projectDesktop = {
 		open: e => {
 			console.log(projectCard[0]);
 			projectCard[0].innerHTML = e.currentTarget.innerHTML;
@@ -104,23 +99,6 @@ function handleClicks() {
 		}
 	};
 
-	var menuMore = {
-		open: () => {
-			menu.addClass("active");
-			obfuscator.fadeTo("fast", 1, () => obfuscator.show());
-		},
-		close: () => {
-			menu.removeClass("active");
-			obfuscator.fadeTo("fast", 0, () => obfuscator.hide());
-		}
-	};
-
-	profileImage.click(() => menuMore.open());
-	obfuscator.click(() => {
-		menuMore.close();
-		projectDesktop.close();
-	});
-
 	card.on("mousedown", function() {
 		if (slideCardsContainer[0].style["left"] == "") dragPosition = 0;
 		else dragPosition = parseInt(slideCardsContainer[0].style["left"]);
@@ -132,7 +110,7 @@ function handleClicks() {
 				? 0
 				: parseInt(slideCardsContainer[0].style["left"]);
 		if (currentDragPosition == dragPosition) {
-			if (window.innerWidth < 600) {
+			if (window.innerWidth < 800) {
 				var target = $(e.currentTarget);
 				if (target.hasClass("active")) {
 					target.removeClass("active");
@@ -143,7 +121,7 @@ function handleClicks() {
 				}
 			} else projectDesktop.open(e);
 		}
-	});
+	}); */
 
 	window.visualViewport.addEventListener("resize", function() {
 		console.log("window resize");
@@ -199,29 +177,29 @@ function setupDraggableCards() {
 			});
 			currentSlide = -leftPositionRounded / (sliderWidth / numberOfSlides);
 
-			$("body").css(
+			/* $("body").css(
 				"background",
 				"linear-gradient(to top right, " +
 					dicWithColors[currentSlide % numberOfColors][0] +
 					", " +
 					dicWithColors[currentSlide % numberOfColors][1] +
 					")"
-			);
+			); */
 		}
 	});
 }
 
-function createCardList(slideCardsContainer) {
-	let bodyWidth = $("body").width();
+function createCardList() {
+	var slideCardsContainer = $(".cards-container");
 
-	$("body").css(
+	/* $("body").css(
 		"background",
 		"linear-gradient(to top right, " +
 			dicWithColors[0][0] +
 			", " +
 			dicWithColors[0][1] +
 			")"
-	);
+	); */
 
 	for (var i = 0; i < projectsList.length; i++) {
 		var icons = "";
@@ -242,15 +220,9 @@ function createCardList(slideCardsContainer) {
 				'<span class="card-title">' +
 				projectsList[i].title +
 				"</span>" +
-				'<div class="card_content">' +
-				projectsList[i].content +
-				'<button style="background: linear-gradient(to top right, ' +
-				dicWithColors[i % Object.keys(dicWithColors).length][0] +
-				", " +
-				dicWithColors[i % Object.keys(dicWithColors).length][1] +
-				')"><a href="' +
+				'<button class="card-more-button"><a href="' +
 				projectsList[i].link +
-				'">See More</a></button></div></div>' +
+				'">See More</a></button></div>' +
 				"</li>"
 		);
 	}

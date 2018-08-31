@@ -63,7 +63,6 @@ var dicWithColors = {
 
 Number.prototype.roundTo = function(nTo) {
 	nTo = nTo || 10;
-	console.log("nTo: " + nTo + "round " + Math.round(this * (1 / nTo)));
 	return Math.round(this * (1 / nTo)) * nTo;
 };
 
@@ -71,9 +70,7 @@ var windowWidth = window.innerWidth,
 	windowHeight = window.innerHeight;
 
 $(document).ready(function() {
-	var slideCardsContainer = $(".cards-container");
-
-	createCardList(slideCardsContainer);
+	createCardList();
 
 	setupDraggableCards();
 
@@ -83,13 +80,15 @@ $(document).ready(function() {
 function handleClicks() {
 	var slideCardsContainer = $(".cards-container"),
 		cardList = $("#slider ul"),
-		profileImage = $(".profile-image"),
-		menu = $("#more_menu"),
 		obfuscator = $(".obfuscator"),
 		card = $(".cards-container .card"),
 		projectCard = $("#project");
 
 	var dragPosition = 0;
+
+	obfuscator.click(() => {
+		projectDesktop.close();
+	});
 
 	var projectDesktop = {
 		open: e => {
@@ -103,23 +102,6 @@ function handleClicks() {
 			obfuscator.fadeTo("fast", 0, () => obfuscator.hide());
 		}
 	};
-
-	var menuMore = {
-		open: () => {
-			menu.addClass("active");
-			obfuscator.fadeTo("fast", 1, () => obfuscator.show());
-		},
-		close: () => {
-			menu.removeClass("active");
-			obfuscator.fadeTo("fast", 0, () => obfuscator.hide());
-		}
-	};
-
-	profileImage.click(() => menuMore.open());
-	obfuscator.click(() => {
-		menuMore.close();
-		projectDesktop.close();
-	});
 
 	card.on("mousedown", function() {
 		if (slideCardsContainer[0].style["left"] == "") dragPosition = 0;
@@ -211,8 +193,8 @@ function setupDraggableCards() {
 	});
 }
 
-function createCardList(slideCardsContainer) {
-	let bodyWidth = $("body").width();
+function createCardList() {
+	var slideCardsContainer = $(".cards-container");
 
 	$("body").css(
 		"background",
