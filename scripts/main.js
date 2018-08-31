@@ -61,24 +61,15 @@ Number.prototype.roundTo = function(nTo) {
 var windowWidth = window.innerWidth,
 	windowHeight = window.innerHeight;
 
-var colors = [
-	["#02b3e4", "#02ccba"],
-	["#f05d6f", "#f9b252"],
-	["#536be6", "#63b3ec"],
-	["#807d6e", "#fcd82f"],
-	["#2e3e50", "#53bd9c"],
-	["#fdd4a4", "#32abda"]
-];
-
 var numberOfSlides = 0;
 
 var dicWithColors = {
-	"0": ["#02b3e4", "#02ccba"],
+	"0": ["#4CB8C4", "#3CD3AD"],
 	"1": ["#f05d6f", "#f9b252"],
 	"2": ["#536be6", "#63b3ec"],
 	"3": ["#807d6e", "#fcd82f"],
 	"4": ["#2e3e50", "#53bd9c"],
-	"5": ["#fdd4a4", "#32abda"]
+	"5": ["#32abda", "#fdd4a4"]
 };
 
 $(document).ready(function() {
@@ -138,7 +129,7 @@ function handleClicks() {
 	});
 
 	card.on("click", function(e) {
-		console.log(parseInt(slideCardsContainer[0].style["left"]),dragPosition);
+		console.log(parseInt(slideCardsContainer[0].style["left"]), dragPosition);
 		if (parseInt(slideCardsContainer[0].style["left"]) == dragPosition) {
 			if (window.innerWidth < 800) {
 				var target = $(e.currentTarget);
@@ -153,54 +144,68 @@ function handleClicks() {
 		}
 	});
 
-	window.visualViewport.addEventListener('resize', function() { console.log("window resize")});
+	window.visualViewport.addEventListener("resize", function() {
+		console.log("window resize");
+	});
+}
+
+function getCardPadding() {
+	var cards = $(".card");
+	return 2 * parseInt(cards.css("paddingLeft"));
+}
+
+function getCardMargin() {
+	var cards = $(".card");
+	return 2 * parseInt(cards.css("marginLeft"));
+}
+
+function getSliderWidth() {
+	var bodyWidth = $("body").width(),
+		cards = $(".card"),
+		numberOfSlides = $("#slider ul").children().length - 1;
+
+	if (bodyWidth < 600) return $("body").width() * numberOfSlides;
+	else
+		return (
+			(cards.width() + getCardPadding() + getCardMargin()) * numberOfSlides
+		);
 }
 
 function setupDraggableCards() {
-	var cardList = $("#slider ul");
-	var slides = $("#slider ul").children().length - 1;
-	var bodyWidth = $("body").width();
+	var cards = $(".card"),
+		cardList = $("#slider ul"),
+		bodyWidth = $("body").width(),
+		numberOfSlides = $("#slider ul").children().length - 1,
+		sliderWidth = getSliderWidth();
 
-	var slideWidth =
-		$("#slider").width() - $("#slider").width() / projectsList.length;
-
-	if (bodyWidth < 600) {
-		slideWidth = $("body").width() * slides;
-	}
-
-	var min = 0;
-	var max = -slideWidth;
-	var currentSlide = 0;
+	var min = 0,
+		max = -sliderWidth,
+		currentSlide = 0,
+		numberOfColors = Object.keys(dicWithColors).length;
 
 	cardList.draggable({
 		cursor: "pointer",
 		position: "unset",
 		axis: "x",
 		drag: function(event, ui) {
-			//Temporary fix for viewport bug
-			window.visualViewport
 			if (ui.position.left > min) ui.position.left = min;
 			if (ui.position.left < max) ui.position.left = max;
 		},
 		stop: function(event, ui) {
-			var leftPositionRounded = ui.position.left.roundTo(slideWidth / slides);
+			var leftPositionRounded = ui.position.left.roundTo(
+				sliderWidth / numberOfSlides
+			);
 			$(this).animate({
 				left: leftPositionRounded
 			});
-			currentSlide = -leftPositionRounded / (slideWidth / slides);
-			//console.log(leftPositionRounded / (slideWidth / slides));
-			if (!(currentSlide.toString() in dicWithColors)) {
-				var listOfColors = colors[numberOfSlides % colors.length];
-				dicWithColors[leftPositionRounded.toString()] = listOfColors;
-				numberOfSlides++;
-			}
+			currentSlide = -leftPositionRounded / (sliderWidth / numberOfSlides);
 
 			$("body").css(
 				"background",
 				"linear-gradient(to top right, " +
-					dicWithColors[currentSlide.toString()][0] +
+					dicWithColors[currentSlide % numberOfColors][0] +
 					", " +
-					dicWithColors[currentSlide.toString()][1] +
+					dicWithColors[currentSlide % numberOfColors][1] +
 					")"
 			);
 		}
@@ -208,7 +213,16 @@ function setupDraggableCards() {
 }
 
 function createCardList(slideCardsContainer) {
-	let bodyWidth =$("body").width();
+	let bodyWidth = $("body").width();
+
+	$("body").css(
+		"background",
+		"linear-gradient(to top right, " +
+			dicWithColors[0][0] +
+			", " +
+			dicWithColors[0][1] +
+			")"
+	);
 
 	for (var i = 0; i < projectsList.length; i++) {
 		var icons = "";
@@ -232,9 +246,9 @@ function createCardList(slideCardsContainer) {
 				'<div class="card_content">' +
 				projectsList[i].content +
 				'<button style="background: linear-gradient(to top right, ' +
-				colors[i][0] +
+				dicWithColors[i % Object.keys(dicWithColors).length][0] +
 				", " +
-				colors[i][1] +
+				dicWithColors[i % Object.keys(dicWithColors).length][1] +
 				')"><a href="' +
 				projectsList[i].link +
 				'">See More</a></button></div></div>' +
