@@ -101,8 +101,8 @@ body {
     -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 18px 3px;
     -moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 18px 3px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 18px 3px;
-    transition: all 200ms ease-in;
-    -webkit-transition: all 200ms ease-in;
+    transition: all 200ms ease-in-out;
+    -webkit-transition: all 200ms ease-in-out;
     overflow: hidden;
     z-index: 3;
 }
