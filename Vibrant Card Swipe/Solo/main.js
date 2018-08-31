@@ -189,8 +189,7 @@ function setupDraggableCards() {
 					dicWithColors[currentSlide % numberOfColors][1] +
 					")"
 			);
-			var metaThemeColor = document.querySelector("meta[name=theme-color]");
-			metaThemeColor.setAttribute("content", dicWithColors[currentSlide % numberOfColors][0]);
+			$("meta[name='theme-color']").attr('content', dicWithColors[currentSlide % numberOfColors][1]);
 		}
 	});
 }
@@ -238,6 +237,7 @@ function createCardList() {
 				"</li>"
 		);
 	}
+	$("meta[name='theme-color']").attr('content', dicWithColors[0][1]);
 }
 
 window.addEventListener("orientationchange", function() {

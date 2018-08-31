@@ -207,7 +207,7 @@ function setupDraggableCards() {
 					dicWithColors[currentSlide % numberOfColors][1] +
 					")"
 			);
-			$("meta[name='theme-color']").attr('content', dicWithColors[currentSlide % numberOfColors][0]);
+			$("meta[name='theme-color']").attr('content', dicWithColors[currentSlide % numberOfColors][1]);
 		}
 	});
 }
@@ -255,6 +255,7 @@ function createCardList(slideCardsContainer) {
 				"</li>"
 		);
 	}
+	$("meta[name='theme-color']").attr('content', dicWithColors[0][1]);
 }
 
 window.addEventListener("orientationchange", function() {
