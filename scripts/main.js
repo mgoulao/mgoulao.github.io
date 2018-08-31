@@ -129,8 +129,12 @@ function handleClicks() {
 	});
 
 	card.on("click", function(e) {
-		console.log(parseInt(slideCardsContainer[0].style["left"]), dragPosition);
-		if (parseInt(slideCardsContainer[0].style["left"]) == dragPosition) {
+		var currentDragPosition =
+			slideCardsContainer[0].style["left"] == ""
+				? 0
+				: parseInt(slideCardsContainer[0].style["left"]);
+		console.log(currentDragPosition, dragPosition);
+		if (currentDragPosition == dragPosition) {
 			if (window.innerWidth < 800) {
 				var target = $(e.currentTarget);
 				if (target.hasClass("active")) {
@@ -172,9 +176,7 @@ function getSliderWidth() {
 }
 
 function setupDraggableCards() {
-	var cards = $(".card"),
-		cardList = $("#slider ul"),
-		bodyWidth = $("body").width(),
+	var cardList = $("#slider ul"),
 		numberOfSlides = $("#slider ul").children().length - 1,
 		sliderWidth = getSliderWidth();
 
