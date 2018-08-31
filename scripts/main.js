@@ -207,8 +207,7 @@ function setupDraggableCards() {
 					dicWithColors[currentSlide % numberOfColors][1] +
 					")"
 			);
-			var metaThemeColor = document.querySelector("meta[name=theme-color]");
-			metaThemeColor.setAttribute("content", dicWithColors[currentSlide % numberOfColors][0]);
+			$("meta[name='theme-color']").attr('content', dicWithColors[currentSlide % numberOfColors][0]);
 		}
 	});
 }
