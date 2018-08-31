@@ -249,7 +249,7 @@ function createCardList() {
 				"</li>"
 		);
 	}
-	$($(".card")[0]).css("margin-left", viewGap / 2);
+	if ($("body").width() < 600) $($(".card")[0]).css("margin-left", viewGap / 2);
 }
 
 window.addEventListener("orientationchange", function() {
