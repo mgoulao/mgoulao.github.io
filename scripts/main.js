@@ -182,6 +182,8 @@ function setupDraggableCards() {
 		currentSlide = 0,
 		numberOfColors = Object.keys(dicWithColors).length;
 
+	var startTime = 0, endTime = 0,startPosition = 0, endPosition = 0;
+	
 	cardList.draggable({
 		cursor: "pointer",
 		position: "unset",
@@ -189,9 +191,21 @@ function setupDraggableCards() {
 		drag: function(event, ui) {
 			if (ui.position.left > min) ui.position.left = min;
 			if (ui.position.left < max) ui.position.left = max;
+			//Set start drag time
+			if (!startTime) { 
+				startTime = Date.now();
+				startPosition = ui.position.left;
+			}
 		},
 		stop: function(event, ui) {
-			var leftPositionRounded = ui.position.left.roundTo(
+			endTime = Date.now();
+			endPosition = ui.position.left;
+			var dragTime = endTime - startTime;
+			var sliderLeftPosition = endPosition + Math.sign((startPosition > endPosition) ? -1 : 1) * ($(".card").width()/2) + (1/(2+ dragTime));
+			if(sliderLeftPosition < max) sliderLeftPosition = max;
+			if(sliderLeftPosition > min) sliderLeftPosition = min;
+			console.log("UI position: "+ ui.position.left  + " new postion " + $(".card").width() + (1/(2+ dragTime)));
+			var leftPositionRounded = sliderLeftPosition.roundTo(
 				sliderWidth / numberOfSlides
 			);
 			$(this).animate({
@@ -208,6 +222,7 @@ function setupDraggableCards() {
 					")"
 			);
 			$("meta[name='theme-color']").attr('content', dicWithColors[currentSlide % numberOfColors][0]);
+			startTime = 0;
 		}
 	});
 }
