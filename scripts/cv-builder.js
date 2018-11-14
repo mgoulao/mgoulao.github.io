@@ -30,8 +30,8 @@ var education = {
 			"name": "Instituto Superior Técnico",
 			"datesAttended": "2017 - 2020",
 			"location": "Lisbon, Portugal",
-			"degree": "Bologna Degree",
-			"url": "https://tecnico.ulisboa.pt/pt/"
+			"degree": "Computer Science and Engineering",
+			"url": "https://tecnico.ulisboa.pt/en/"
 		}
 	],
 	"onlineCourses": [
