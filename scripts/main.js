@@ -180,6 +180,7 @@ function setupDraggableCards() {
 		position: "unset",
 		axis: "x",
 		drag: function(event, ui) {
+			$(this).clearQueue();
 			if (ui.position.left > min) ui.position.left = min;
 			if (ui.position.left < max) ui.position.left = max;
 			//Set start drag time
@@ -187,21 +188,14 @@ function setupDraggableCards() {
 				startTime = Date.now();
 				startPosition = ui.position.left;
 			}
-			console.log("Left Drag: ", ui.position.left);
-		},
-		start: function(event, ui) {
-			console.log("Left Start: ", ui.position.left);
 		},
 		stop: function(event, ui) {
-			 console.log("Left Stop: ", ui.position.left);
-
 			endTime = Date.now();
 			endPosition = ui.position.left;
 			var dragTime = endTime - startTime;
 			var sliderLeftPosition = endPosition + Math.sign((startPosition > endPosition) ? -1 : 1) * ($(".card").width()/2) * (50/(2+ dragTime));
  			if(sliderLeftPosition < max) sliderLeftPosition = max;
 			if(sliderLeftPosition > min) sliderLeftPosition = min;
-			console.log("UI position: "+ ui.position.left  + " new postion " + (100/(2+ dragTime)));
 			var leftPositionRounded = sliderLeftPosition.roundTo(
 				sliderWidth / numberOfSlides
 			);
