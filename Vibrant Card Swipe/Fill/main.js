@@ -219,6 +219,7 @@ function setupDraggableCards() {
 			$($("#sliderIndicatorContainer .indicator")[currentSlide]).addClass(
 				"active"
 			);
+			startTime = 0;
 		}
 	});
 }

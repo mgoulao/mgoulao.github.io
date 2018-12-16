@@ -237,6 +237,7 @@ function setupDraggableCards() {
 				"content",
 				dicWithColors[currentSlide % numberOfColors][0]
 			);
+			startTime = 0;
 		}
 	});
 }

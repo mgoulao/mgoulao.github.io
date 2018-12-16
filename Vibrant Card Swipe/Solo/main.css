@@ -9,6 +9,7 @@
 	--card-padding: 16px;
 	--card-margin: 24px 32px;
 	--card-mobile-margin: 30vh 32px 14px;
+	--card-small-mobile-margin: 26vh 32px 14px;
 	--card-title-color: #212121;
 	--card-subtitle-color: #424242;
 	--card-background-color: #fff;
@@ -408,5 +409,17 @@ body {
 	}
 	#more_menu {
 		width: 100%;
+	}
+}
+
+@media screen and (max-height: 600px) {
+	#welcome-message {
+		padding: 16px;
+    }
+    #welcome-message h3 {
+		margin-top: 2px;
+	}
+    .card {
+		margin: var(--card-small-mobile-margin);
 	}
 }
