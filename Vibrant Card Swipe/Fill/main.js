@@ -150,6 +150,22 @@ function getSliderWidth() {
 		);
 }
 
+function createSliderIndicator(numberOfSlides) {
+	var sliderDiv = $("#slider");
+	let sliderIndicator = document.createElement("div");
+	let sliderIndicatorContainer = document.createElement("div");
+	sliderIndicator.setAttribute("id", "sliderIndicator");
+	sliderIndicatorContainer.setAttribute("id", "sliderIndicatorContainer");
+	sliderIndicator.appendChild(sliderIndicatorContainer);
+	sliderDiv.append(sliderIndicator);
+	for (let i = 0; i < numberOfSlides + 1; i++) {
+		let indicator = document.createElement("div");
+		if (i == 0) indicator.setAttribute("class", "indicator active");
+		else indicator.setAttribute("class", "indicator");
+		sliderIndicatorContainer.appendChild(indicator);
+	}
+}
+
 function setupDraggableCards() {
 	var cardList = $("#slider ul"),
 		numberOfSlides = $("#slider ul").children().length - 1,
@@ -157,19 +173,41 @@ function setupDraggableCards() {
 
 	var min = 0,
 		max = -sliderWidth,
-		currentSlide = 0,
-		numberOfColors = Object.keys(dicWithColors).length;
+		currentSlide = 0;
+
+	var startTime = 0,
+		endTime = 0,
+		startPosition = 0,
+		endPosition = 0;
+
+	createSliderIndicator(numberOfSlides);
 
 	cardList.draggable({
 		cursor: "pointer",
 		position: "unset",
 		axis: "x",
 		drag: function(event, ui) {
+			$(this).clearQueue();
 			if (ui.position.left > min) ui.position.left = min;
 			if (ui.position.left < max) ui.position.left = max;
+			//Set start drag time
+			if (!startTime) {
+				startTime = Date.now();
+				startPosition = ui.position.left;
+			}
 		},
 		stop: function(event, ui) {
-			var leftPositionRounded = ui.position.left.roundTo(
+			endTime = Date.now();
+			endPosition = ui.position.left;
+			var dragTime = endTime - startTime;
+			var sliderLeftPosition =
+				endPosition +
+				Math.sign(startPosition > endPosition ? -1 : 1) *
+					($(".card").width() / 2) *
+					(50 / (2 + dragTime));
+			if (sliderLeftPosition < max) sliderLeftPosition = max;
+			if (sliderLeftPosition > min) sliderLeftPosition = min;
+			var leftPositionRounded = sliderLeftPosition.roundTo(
 				sliderWidth / numberOfSlides
 			);
 			$(this).animate({
@@ -177,29 +215,16 @@ function setupDraggableCards() {
 			});
 			currentSlide = -leftPositionRounded / (sliderWidth / numberOfSlides);
 
-			/* $("body").css(
-				"background",
-				"linear-gradient(to top right, " +
-					dicWithColors[currentSlide % numberOfColors][0] +
-					", " +
-					dicWithColors[currentSlide % numberOfColors][1] +
-					")"
-			); */
+			$("#sliderIndicatorContainer .indicator").removeClass("active");
+			$($("#sliderIndicatorContainer .indicator")[currentSlide]).addClass(
+				"active"
+			);
 		}
 	});
 }
 
 function createCardList() {
 	var slideCardsContainer = $(".cards-container");
-
-	/* $("body").css(
-		"background",
-		"linear-gradient(to top right, " +
-			dicWithColors[0][0] +
-			", " +
-			dicWithColors[0][1] +
-			")"
-	); */
 
 	for (var i = 0; i < projectsList.length; i++) {
 		var icons = "";
@@ -220,9 +245,9 @@ function createCardList() {
 				'<span class="card-title">' +
 				projectsList[i].title +
 				"</span>" +
-				'<button class="card-more-button"><a href="' +
-				projectsList[i].link +
-				'">See More</a></button></div>' +
+				'<a href="' +
+				projectsList[i].link + '">'+
+				'<button class="card-more-button">See More</button></a></div>' +
 				"</li>"
 		);
 	}

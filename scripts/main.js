@@ -54,7 +54,6 @@ var dicWithColors = {
 
 Number.prototype.roundTo = function(nTo) {
 	nTo = nTo || 10;
-	console.log("nTo: " + nTo + "round " + Math.round(this * (1 / nTo)));
 	return Math.round(this * (1 / nTo)) * nTo;
 };
 
@@ -163,8 +162,24 @@ function getSliderWidth() {
 		);
 }
 
+function createSliderIndicator(numberOfSlides) {
+	var sliderDiv = $("#slider");
+	let sliderIndicator = document.createElement("div");
+	let sliderIndicatorContainer = document.createElement("div");
+	sliderIndicator.setAttribute("id", "sliderIndicator");
+	sliderIndicatorContainer.setAttribute("id", "sliderIndicatorContainer");
+	sliderIndicator.appendChild(sliderIndicatorContainer);
+	sliderDiv.append(sliderIndicator);
+	for (let i = 0; i < numberOfSlides + 1; i++) {
+		let indicator = document.createElement("div");
+		if (i == 0) indicator.setAttribute("class", "indicator active");
+		else indicator.setAttribute("class", "indicator");
+		sliderIndicatorContainer.appendChild(indicator);
+	}
+}
+
 function setupDraggableCards() {
-	var cardList = $("#slider ul"),
+	var	cardList = $("#slider ul"),
 		numberOfSlides = $("#slider ul").children().length - 1,
 		sliderWidth = getSliderWidth();
 
@@ -173,8 +188,13 @@ function setupDraggableCards() {
 		currentSlide = 0,
 		numberOfColors = Object.keys(dicWithColors).length;
 
-	var startTime = 0, endTime = 0,startPosition = 0, endPosition = 0;
-	
+	var startTime = 0,
+		endTime = 0,
+		startPosition = 0,
+		endPosition = 0;
+
+	createSliderIndicator(numberOfSlides);
+
 	cardList.draggable({
 		cursor: "pointer",
 		position: "unset",
@@ -184,7 +204,7 @@ function setupDraggableCards() {
 			if (ui.position.left > min) ui.position.left = min;
 			if (ui.position.left < max) ui.position.left = max;
 			//Set start drag time
-			if (!startTime) { 
+			if (!startTime) {
 				startTime = Date.now();
 				startPosition = ui.position.left;
 			}
@@ -193,9 +213,13 @@ function setupDraggableCards() {
 			endTime = Date.now();
 			endPosition = ui.position.left;
 			var dragTime = endTime - startTime;
-			var sliderLeftPosition = endPosition + Math.sign((startPosition > endPosition) ? -1 : 1) * ($(".card").width()/2) * (50/(2+ dragTime));
- 			if(sliderLeftPosition < max) sliderLeftPosition = max;
-			if(sliderLeftPosition > min) sliderLeftPosition = min;
+			var sliderLeftPosition =
+				endPosition +
+				Math.sign(startPosition > endPosition ? -1 : 1) *
+					($(".card").width() / 2) *
+					(50 / (2 + dragTime));
+			if (sliderLeftPosition < max) sliderLeftPosition = max;
+			if (sliderLeftPosition > min) sliderLeftPosition = min;
 			var leftPositionRounded = sliderLeftPosition.roundTo(
 				sliderWidth / numberOfSlides
 			);
@@ -203,6 +227,11 @@ function setupDraggableCards() {
 				left: leftPositionRounded
 			});
 			currentSlide = -leftPositionRounded / (sliderWidth / numberOfSlides);
+
+			$("#sliderIndicatorContainer .indicator").removeClass("active");
+			$($("#sliderIndicatorContainer .indicator")[currentSlide]).addClass(
+				"active"
+			);
 
 			$("body").css(
 				"background",
@@ -212,7 +241,10 @@ function setupDraggableCards() {
 					dicWithColors[currentSlide % numberOfColors][1] +
 					")"
 			);
-			$("meta[name='theme-color']").attr('content', dicWithColors[currentSlide % numberOfColors][0]);
+			$("meta[name='theme-color']").attr(
+				"content",
+				dicWithColors[currentSlide % numberOfColors][0]
+			);
 			startTime = 0;
 		}
 	});
@@ -238,30 +270,31 @@ function createCardList(slideCardsContainer) {
 
 		slideCardsContainer.append(
 			'<li class="card">' +
-				"</div>" +
+				'</div>' +
 				'<div class="card-icons">' +
 				icons +
-				"</div>" +
+				'</div>' +
 				'<div class="card-header">' +
 				'<span class="card-type">' +
 				projectsList[i].type +
-				"</span>" +
+				'</span>' +
 				'<span class="card-title">' +
 				projectsList[i].title +
-				"</span>" +
+				'</span>' +
 				'<div class="card_content">' +
 				projectsList[i].content +
+				'<a href="' +
+				projectsList[i].link + '">'+
 				'<button style="background: linear-gradient(to top right, ' +
 				dicWithColors[i % Object.keys(dicWithColors).length][0] +
 				", " +
 				dicWithColors[i % Object.keys(dicWithColors).length][1] +
-				')"><a href="' +
-				projectsList[i].link +
-				'">See More</a></button></div></div>' +
+				')">See More</button>'+
+				'</a></div></div>' +
 				"</li>"
 		);
 	}
-	$("meta[name='theme-color']").attr('content', dicWithColors[0][0]);
+	$("meta[name='theme-color']").attr("content", dicWithColors[0][0]);
 }
 
 window.addEventListener("orientationchange", function() {

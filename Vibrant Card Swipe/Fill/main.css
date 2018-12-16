@@ -26,7 +26,10 @@
     --card-more-button-width: 200px;
     --card-more-button-height: 36px;
     --card-more-button-margin: 30px auto 0 auto;
-    --card-more-button-font-size: 20px;
+	--card-more-button-font-size: 20px;
+	--indicator-background: rgba(255, 255, 255, 0.527);
+	--indicator-zindex: 4;
+	--indicator-active-background: #fff;
 }
 
 * {
@@ -221,11 +224,8 @@ body {
 	border-radius: 50px;
 	text-transform: capitalize;
 	font-size: 24px;
-}
-
-.card a {
+    cursor: pointer;
     color: #fff;
-	text-decoration: none;
 }
 
 .card .card-more-button {
@@ -238,10 +238,11 @@ body {
 	border-radius: 50px;
 	text-transform: capitalize;
 	font-size: var(--card-more-button-font-size);
+	color: #c2bad2;
 }
 
-.card .card-more-button a {
-    color: #c2bad2;
+.card a {
+	text-decoration: none;
 }
 
 #project {
@@ -343,6 +344,38 @@ body {
 	margin-left: 16px;
 	font-size: 18px;
 	color: #212121;
+}
+
+#sliderIndicator {
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+	text-align: center;
+	z-index: var(--indicator-zindex);
+}
+
+#sliderIndicatorContainer {
+    position: relative;
+    margin: 0 auto;
+    display: inline-flex;
+}
+
+.indicator {
+    position: relative;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    margin: 0 6px;
+    background: var(--indicator-background);
+    border-radius: 50px;
+    border: none;
+    transition: background .5s ease-in-out;
+}
+
+.indicator.active {
+    background: var(--indicator-active-background);;
 }
 
 @media screen and (max-width: 600px) {

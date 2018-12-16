@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 :root {
     --background-color: linear-gradient(to top right, #02b3e4, #02ccba);
+    --indicator-background: rgba(255, 255, 255, 0.527);
+	--indicator-zindex: 2;
+	--indicator-active-background: #fff;
 }
 
 * {
@@ -185,10 +188,11 @@ body {
     border-radius: 50px;
     text-transform: capitalize;
     font-size: 24px;
+    cursor: pointer;
+    color: #fff;
 }
 
-.card.active .card_content button a {
-    color: #fff;
+.card.active .card_content a {
     text-decoration: none;
 }
 
@@ -292,6 +296,38 @@ body {
     margin-left: 16px;
     font-size: 18px;
     color: #212121;
+}
+
+#sliderIndicator {
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+	text-align: center;
+	z-index: var(--indicator-zindex);
+}
+
+#sliderIndicatorContainer {
+    position: relative;
+    margin: 0 auto;
+    display: inline-flex;
+}
+
+.indicator {
+    position: relative;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    margin: 0 6px;
+    background: var(--indicator-background);
+    border-radius: 50px;
+    border: none;
+    transition: background .5s ease-in-out;
+}
+
+.indicator.active {
+    background: var(--indicator-active-background);;
 }
 
 @media screen and (max-width: 600px) {
