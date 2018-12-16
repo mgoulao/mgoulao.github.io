@@ -290,7 +290,7 @@ function createCardList() {
 				projectsList[i].content +
 				'<a href="' +
 				projectsList[i].link + '">'+
-				'<button style="background: linear-gradient(to top right, ' +
+				'<button class="card-more-button" style="background: linear-gradient(to top right, ' +
 				dicWithColors[i % Object.keys(dicWithColors).length][0] +
 				", " +
 				dicWithColors[i % Object.keys(dicWithColors).length][1] +

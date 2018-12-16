@@ -28,6 +28,7 @@
 	--card-more-button-height: 36px;
 	--card-more-button-margin: 30px auto 0 auto;
 	--card-more-button-font-size: 20px;
+	--card-more-button-color: #fff;
 	--indicator-background: rgba(255, 255, 255, 0.527);
 	--indicator-zindex: 4;
 	--indicator-active-background: #fff;
@@ -217,7 +218,7 @@ body {
 }
 
 .card.active .card_content button {
-	background: #3f3475;
+	background: #fff;
 	width: var(--card-more-button-width);
 	display: block;
 	margin: 50px auto 0 auto;
@@ -233,8 +234,8 @@ body {
 }
 
 .card .card-more-button {
-	background: #3f3475;
-	color: #fff;
+	background: #fff;
+	color: var(--card-more-button-color);
 	width: var(--card-more-button-width);
 	display: block;
 	margin: var(--card-more-button-margin);
