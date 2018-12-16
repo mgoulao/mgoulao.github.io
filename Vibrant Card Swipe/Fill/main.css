@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins");
 :root {
-	--background-color: url("./night-plane-material-wall.jpg");
+	--background-image: url("./night-plane-material-wall.jpg");
+	--background-color: #29387f;
 	--card-width: 100vw;
 	--card-mobile-width: 100vw;
 	--card-height: 100vh;
@@ -59,7 +60,8 @@ body {
 	width: 100vw;
 	height: 100%;
 	font-size: 20px;
-	background: var(--background-color);
+	background-color: var(--background-color);
+	background-image: var(--background-image);
 	background-size: cover;
 	font-family: "Poppins", sans-serif;
 	color: #fff;
