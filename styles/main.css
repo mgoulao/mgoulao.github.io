@@ -76,7 +76,7 @@ body {
 .cards-container {
 	height: 100%;
 	display: flex;
-	margin: 250px 0;
+	margin: 35vh 0;
 	list-style: none;
 }
 
