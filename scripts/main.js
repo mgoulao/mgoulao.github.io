@@ -289,7 +289,7 @@ function createCardList(slideCardsContainer) {
 				dicWithColors[i % Object.keys(dicWithColors).length][0] +
 				", " +
 				dicWithColors[i % Object.keys(dicWithColors).length][1] +
-				')">See More</button>'+
+				')" rel="noreferrer">See More</button>'+
 				'</a></div></div>' +
 				"</li>"
 		);

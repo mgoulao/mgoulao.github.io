@@ -245,6 +245,7 @@ body {
 	width: 42px;
 	height: 42px;
 	border-radius: 50%;
+	object-fit: cover;
 }
 
 #more_menu .menu_header {
