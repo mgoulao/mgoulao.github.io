@@ -78,18 +78,7 @@ body {
 	display: flex;
 	margin: 35vh 0;
 	list-style: none;
-}
-
-.cards-container::-webkit-scrollbar {
-	width: 15px;
-	background-color: transparent;
-}
-
-.cards-container::-webkit-scrollbar-thumb {
-	border-radius: 10px;
-	-webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 3px 1px;
-	box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 3px 1px;
-	background-color: #0086ac;
+	will-change: left;
 }
 
 .card {
@@ -233,8 +222,7 @@ body {
 	transform: translateY(500px);
 	transition: all 0.5s ease;
 	z-index: 4;
-	box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-		0 1px 5px 0 rgba(0, 0, 0, 0.12);
+	box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
 #more_menu.active {
@@ -363,11 +351,11 @@ body {
 @media screen and (max-height: 600px) {
 	#welcome-message {
 		padding: 16px;
-    }
-    #welcome-message h3 {
+	}
+	#welcome-message h3 {
 		margin-top: 2px;
 	}
-    .card {
+	.card {
 		margin: 26vh 32px 14px;
 	}
 }
