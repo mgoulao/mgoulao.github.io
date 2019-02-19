@@ -78,6 +78,13 @@ $(document).ready(function () {
 	setupDraggableCards();
 
 	handleClicks();
+
+	//Welcome message for terminal 
+	console.log("%cWelcome to my personal Portefolio",
+		"border-radius:14px; color: #fff; background-color: #0D47A1; padding: 4px 8px;"+
+		"font-size: 16px");
+	console.log("You can fork this site template at: " +
+		"https://github.com/mgoulao/Vibrant-Card-Swipe");
 });
 
 function handleClicks() {
