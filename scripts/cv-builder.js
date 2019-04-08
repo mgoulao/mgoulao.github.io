@@ -8,9 +8,9 @@ var bio = {
 		"twitter": "@mgoulao_1",
 		"location": "Lisbon, Portugal"
 	},
-	"picture": "https://assets.hole19golf.com/users/avatars/000/708/092/thumb/bab510e5579907d21318109512e78bc462738876.jpeg",
-	"welcomeMessage": "I'm from Lisbon, Portugal and I'm studying Telecommunications and Informatics Engineering at Instituto Superior Técnico.",
-	"skills": ["Web Development", "HTML", "CSS", "Javascript", "Android Development"]
+	"picture": "./resources/profile.jpg",
+	"welcomeMessage": "I'm from Lisbon, Portugal and I'm studying Computer Science and Engineering at Instituto Superior Técnico.",
+	"skills": ["C", "Python", "Java", "HTML", "CSS", "Javascript", "Android Development"]
 };
 var work = {
 	"jobs": []/*[
@@ -31,7 +31,7 @@ var education = {
 			"datesAttended": "2017 - 2020",
 			"location": "Lisbon, Portugal",
 			"degree": "Computer Science and Engineering",
-			"url": "https://tecnico.ulisboa.pt/en/"
+			"url": "https://fenix.tecnico.ulisboa.pt/cursos/leic-t"
 		}
 	],
 	"onlineCourses": [
@@ -45,55 +45,45 @@ var education = {
 };
 
 var projects = {
-    "projects": [
-        {
-            "title": "Chess Mate",
-            "img": "./chess/Wallpaper-big.png",
+	"projects": [
+		{
+			"title": "Shank",
+			"img": "",
+			"color": "mg-almost-black",
+			"dates": "2019 - present",
+			"description": "Shank is a free video analysis Web App, built with Reactjs, that helps golf players improve their swing.",
+			"images": [],
+			"link": "https://shank-swing.firebaseapp.com"
+		},
+		{
+			"title": "Chess Mate",
+			"img": "./chess/Wallpaper-big.png",
 			"color": "mg-almost-black",
 			"dates": "2017 - 2018",
-			"description": "",
+			"description": "Google Assistant Action - Chess Mate, won the Actions on Google Challenge in the Best App by Students category.",
 			"images": [],
-            "link": "https://esteveste.github.io/Chess_Google_Assistant_Contest"
-        },
-        {
-            "title": "Fuchsia Web Demo",
-            "img": "",
-            "color": "mg-probably-red",
-            "dates": "2018 - present",
-			"description": "Small Web Demo of the new Google OS project",
+			"link": "https://esteveste.github.io/Chess_Google_Assistant_Contest"
+		},
+		{
+			"title": "Fuchsia Web Demo",
+			"img": "",
+			"color": "mg-probably-red",
+			"dates": "2018 - 2018",
+			"description": "Small Web Demo of the Armadillo Shell.",
 			"images": [],
-            "link": "https://mgoulao.github.io/fuchsia/"
-        },
-        {
-            "title": "Tesla Portugal",
-            "img": "./resources/tesla-logo-big.png",
-			"color": "mg-green",
-			"dates": "2015 - 2017",
-			"description": "",
-			"images": [],
-            "link": "https://teslaportugal.blogspot.com"
-        },
-        {
-            "title": "EV Map",
-            "img": "./resources/ev-map.webp",
+			"link": "https://mgoulao.github.io/fuchsia/"
+		},
+		{
+			"title": "EV Map",
+			"img": "./resources/ev-map.webp",
 			"color": "mg-kinda-purple",
 			"dates": "2016 - 2017",
 			"description": "",
 			"images": [],
-            "link": "#"
-        }
-    ]
-}	
-/*var projects = {
-	"projects": [
-		{
-			"title": "Tesla Portugal",
-			"dates": "2014 - 2017",
-			"description": "Tesla Portugal is a blog that aims to promote the Tesla brand in Portugal.",
-			"images": []
-		}]
+			"link": "#"
+		}
+	]
 }
-*/
 
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
 var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
@@ -130,7 +120,7 @@ if (work.jobs.length > 0) {
 
 for (var i = 0; i < numProjects; i++) {
 	var formattedProjectStart = HTMLprojectStart.replace("%color%", projects.projects[i].color);
-	
+
 	$("#projects .mg-cv-card-container").append(formattedProjectStart);
 
 	var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
@@ -149,12 +139,12 @@ if (education.schools.length > 0 || education.onlineCourses.length > 0) {
 		var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
 		var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[i].datesAttended);
 		var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location);
-		var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[i].major);
+		/* var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[i].major); */
 
 		$(".education-entry:last").append(formattedSchoolName + formattedSchoolDegree);
 		$(".education-entry:last").append(formattedSchoolDates);
 		$(".education-entry:last").append(formattedSchoolLocation);
-		$(".education-entry:last").append(formattedSchoolMajor);
+		/* $(".education-entry:last").append(formattedSchoolMajor); */
 	}
 
 	if (education.onlineCourses.length > 0) {

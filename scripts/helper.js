@@ -30,9 +30,9 @@ var HTMLprojectStart = '<div class="project-entry mg-cv-card %color%"></div>';
 var HTMLprojectTitle = '<a href="#">%data%</a>';
 var HTMLprojectBottomContainer = '<div class="mg-card-bottom-container">' +
     '<div class="date-text">%date%</div>' +
-    '<p><br>%desc%</p></div>';
+    '<p>%desc%</p></div>';
 var HTMLprojectDates = '<div class="date-text">%data%</div>';
-var HTMLprojectDescription = '<p><br>%data%</p>';
+var HTMLprojectDescription = '<p>%data%</p>';
 var HTMLprojectImage = '<img src="%data%">';
 
 var HTMLschoolStart = '<div class="education-entry  mg-cv-card"></div>';
