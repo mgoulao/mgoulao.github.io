@@ -17,6 +17,10 @@
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: #000 url(../resources/bg.jpg);
     background-attachment: fixed;
@@ -25,19 +29,19 @@ body {
 /* Animation properties */
 
 .star {
-    animation: star 10s ease-out infinite;
+    animation: star 8s linear infinite;
 }
 
 .wars {
-    animation: wars 10s ease-out infinite;
+    animation: wars 8s linear infinite;
 }
 
 .byline span {
-    animation: spin-letters 10s linear infinite;
+    animation: spin-letters 8s linear infinite;
 }
 
 .byline {
-    animation: move-byline 10s linear infinite;
+    animation: move-byline 8s linear infinite;
 }
 
 /* Keyframes */
@@ -45,14 +49,20 @@ body {
 @keyframes star {
     0% {
         opacity: 0;
-        transform: scale(1.5) translateY(-0.75em);
+        transform: translateZ(20em) translateY(1.3em);
     }
     20% {
         opacity: 1;
     }
-    89% {
+    50% {
+        transform: translateZ(8.9em) translateY(1.3em);
+    }
+    80% {
+        transform: translateZ(2.2em) translateY(0em);
+    }
+    90% {
         opacity: 1;
-        transform: scale(1);
+        transform: translateZ(0em) translateY(0em);
     }
     100% {
         opacity: 0;
@@ -63,14 +73,20 @@ body {
 @keyframes wars {
     0% {
         opacity: 0;
-        transform: scale(1.5) translateY(0.5em);
+        transform: translateZ(20em) translateY(-1.3em);
     }
     20% {
         opacity: 1;
     }
+    50% {
+        transform: translateZ(8.9em) translateY(-1.3em);
+    }
+    80% {
+        transform: translateZ(2.2em) translateY(0em);
+    }
     90% {
         opacity: 1;
-        transform: scale(1);
+        transform: translateZ(0em) translateY(0em);
     }
     100% {
         opacity: 0;
@@ -81,16 +97,19 @@ body {
 @keyframes spin-letters {
     0%, 10% {
         opacity: 0;
-        transform: rotateY(90deg);
+        transform: scaleY(0);
     }
     30% {
         opacity: 1;
     }
+    55% {
+        transform: scaleY(0);
+    }
     70%, 86% {
-        transform: rotateY(0);
+        transform: scaleY(1);
         opacity: 1;
     }
-    95%, 100% {
+    90%, 100% {
         opacity: 0;
     }
 }
@@ -100,7 +119,7 @@ body {
         transform: translateZ(5em);
     }
     100% {
-        transform: translateZ(0);
+        transform: translateZ(1em);
     }
 }
 
@@ -109,12 +128,10 @@ body {
 .starwars-demo {
     display: none;
     perspective: 800px;
-    transform-style: preserve3d;
+    transform-style: preserve-3d;
 }
 
 /* General styles and layout */
-
-
 
 .starwars-demo {
     height: 17em;
@@ -146,29 +163,15 @@ img {
 }
 
 .byline {
-    color: #fff;
+    color: #a4acc5;
     font-family: sans-serif;
     font-size: 2.25em;
     left: -2em;
-    letter-spacing: 0.4em;
+    letter-spacing: 0.2em;
     right: -2em;
     text-align: center;
     text-transform: uppercase;
     top: 41%;
-}
-
-/*** Media queries for adjusting to different screen sizes ***/
-
-@media only screen and (max-width: 600px) {
-    .starwars-demo {
-        font-size: 10px;
-    }
-}
-
-@media only screen and (max-width: 480px) {
-    .starwars-demo {
-        font-size: 7px;
-    }
 }
 
 /* Text */
@@ -176,12 +179,13 @@ img {
 #intro_text {
     position: absolute;
     display: none;
-    width: 18em;
+    width: 100%;
+    max-width: 100%;
     height: 35em;
     bottom: 0;
     left: 50%;
-    margin-left: -9em;
-    font-size: 350%;
+    margin-left: -50%;
+    font-size: 3.5rem;
     font-weight: bold;
     font-family: sans-serif;
     text-align: justify;
@@ -232,9 +236,8 @@ img {
     transition: opacity 3s ease;
 }
 
-/* Page Content */
-
 header {
+    max-width: 100%;
     display: flex;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -259,12 +262,12 @@ a {
     cursor: pointer;
 }
 
-.menu_option:hover > .option_t_white, .octagon_t_white:hover {
+.menu_option:hover>.option_t_white, .octagon_t_white:hover {
     background: rgba(255, 255, 255, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
-.menu_option:hover > .option_white {
+.menu_option:hover>.option_white {
     background: rgba(255, 255, 255, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
@@ -274,7 +277,7 @@ a {
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-.menu_option:hover > .option_t_red, .octagon_t_red:hover {
+.menu_option:hover>.option_t_red, .octagon_t_red:hover {
     background: rgba(255, 0, 0, 0.7);
     border: 1px solid rgba(255, 0, 0, 0.6);
 }
@@ -378,6 +381,7 @@ a {
 
 section {
     width: 800px;
+    max-width: 100%;
     margin: auto;
     padding: 32px;
     font-family: "Aurebesh", sans-serif;
@@ -392,4 +396,29 @@ section {
 
 .topic_content p {
     padding: 32px 0;
+}
+
+.video {
+    max-width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+    header {
+        overflow-x: scroll;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .starwars-demo {
+        font-size: 10px;
+    }
+    #intro_text {
+        font-size: 2.5rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .starwars-demo {
+        font-size: 7px;
+    }
 }
