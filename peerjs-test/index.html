@@ -28,9 +28,6 @@
 
 		let initialize = () => {
 			peer = new Peer(null, {
-				host: "arteegee.herokuapp.com",
-				port: (location.protocol === "https:") ? 443: 80,
-				path: "/peerjs",
 				debug: 3
 			});
 			peerId;
@@ -48,14 +45,16 @@
 
 				conn.on('open', () => {
 					document.getElementById("connected").innerHTML = "true";
+
+					conn.on('data', (data) => {
+						let item = document.createElement("li");
+						item.innerHTML = data;
+						document.getElementById("messages").appendChild(item);
+						conn.send("Message received");
+					});
 				});
 
-				conn.on('data', (data) => {
-					let item = document.createElement("li");
-					item.innerHTML = data;
-					document.getElementById("messages").appendChild(item);
-					conn.send("Message received");
-				});
+
 
 				conn.on('close', () => {
 					document.getElementById("connected").innerHTML = "false";
