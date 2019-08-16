@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+</head>
+
+<body>
+
+	<button id="start">start</button>
+	<button id="join">join</button>
+
+	</br></br>
+	My peer ID:
+	<b><span id="peerId"></span></b>
+	</br></br>
+	Connected:
+	<b><span id="connected">false</span></b>
+	</br></br>
+	Messages
+	<ul id="messages"></ul>
+
+	<script src="https://unpkg.com/peerjs@1.0.2/dist/peerjs.min.js"></script>
+	<script type="text/javascript">
+		let peer = null;
+		let peerId = null;
+		let conn = null;
+
+		let initialize = () => {
+			peer = new Peer(null, {
+				debug: 3
+			});
+			peerId;
+			peer.on('open', (id) => {
+				peerId = id;
+				document.getElementById("peerId").innerHTML = id;
+			});
+		}
+
+		document.getElementById('start').addEventListener('click', () => {
+			initialize();
+			peer.on('connection', (c) => {
+				conn = c;
+				console.log('Connected to remote peer');
+
+				conn.on('open', () => {
+					document.getElementById("connected").innerHTML = "true";
+				});
+
+				conn.on('data', (data) => {
+					let item = document.createElement("li");
+					item.innerHTML = data;
+					document.getElementById("messages").appendChild(item);
+					conn.send("Message received");
+				});
+
+				conn.on('close', () => {
+					document.getElementById("connected").innerHTML = "false";
+				});
+
+				conn.on('error', err => {
+					console.log("ERROR: ", err);
+					document.getElementById("connected").innerHTML = "false";
+				});
+			});
+		});
+
+		document.getElementById('join').addEventListener('click', () => {
+			initialize();
+			let connPeerId = prompt('Peer id:');
+			if (!connPeerId) {
+				confirm('No peer id added. Try again');
+				return;
+			}
+			if (peerId == connPeerId) {
+				confirm('You can\'t connect to yourself.');
+				return;
+			}
+
+			peer.on('open', () => {
+				conn = peer.connect(connPeerId);
+
+				conn.on('open', () => {
+					document.getElementById("connected").innerHTML = "true";
+					console.log('Connection is now open. Sending message');
+					conn.send('Hello there');
+				});
+
+				conn.on('data', (data) => {
+					let item = document.createElement("li");
+					item.innerHTML = data;
+					document.getElementById("messages").appendChild(item);
+				});
+
+				conn.on('close', () => {
+					document.getElementById("connected").innerHTML = "false";
+				});
+
+				conn.on('error', err => {
+					document.getElementById("connected").innerHTML = "false";
+					console.log('ERROR: ', err);
+				});
+			});
+		});
+	</script>
+</body>
+
+</html>
