@@ -28,7 +28,14 @@
 
 		let initialize = () => {
 			peer = new Peer(null, {
-				debug: 3
+				debug: 3,
+				config: [
+					{
+						url: 'turn:numb.viagenie.ca',
+						credential: 'muazkh',
+						username: 'webrtc@live.com'
+					}
+				]
 			});
 			peerId;
 			peer.on('open', (id) => {
