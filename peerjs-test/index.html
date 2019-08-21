@@ -25,6 +25,7 @@
 		let peer = null;
 		let peerId = null;
 		let conn = null;
+		let messageReceived = false;
 
 		let initialize = () => {
 			peer = new Peer(null, {
@@ -54,16 +55,18 @@
 
 				conn.on('open', () => {
 					document.getElementById("connected").innerHTML = "true";
+					conn.send("Hi from start!");
 
 					conn.on('data', (data) => {
 						let item = document.createElement("li");
 						item.innerHTML = data;
 						document.getElementById("messages").appendChild(item);
-						conn.send("Message received");
+						if (!messageReceived) {
+							conn.send("Message received");
+							messageReceived = true;
+						}
 					});
 				});
-
-
 
 				conn.on('close', () => {
 					document.getElementById("connected").innerHTML = "false";
@@ -94,13 +97,17 @@
 				conn.on('open', () => {
 					document.getElementById("connected").innerHTML = "true";
 					console.log('Connection is now open. Sending message');
-					conn.send('Hello there');
+					conn.send("Hi from join!");
 				});
 
 				conn.on('data', (data) => {
 					let item = document.createElement("li");
 					item.innerHTML = data;
 					document.getElementById("messages").appendChild(item);
+					if (!messageReceived) {
+						conn.send("Message received");
+						messageReceived = true;
+					}
 				});
 
 				conn.on('close', () => {
