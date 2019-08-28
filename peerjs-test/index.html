@@ -9,6 +9,7 @@
 
 	<button id="start">start</button>
 	<button id="join">join</button>
+	<button id="close">close</button>
 
 	</br></br>
 	My peer ID:
@@ -119,6 +120,11 @@
 					console.log('ERROR: ', err);
 				});
 			});
+		});
+
+		document.getElementById('close').addEventListener('click', () => {
+			conn.close();
+			peer.destroy();
 		});
 	</script>
 </body>
