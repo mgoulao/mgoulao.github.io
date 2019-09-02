@@ -34,16 +34,21 @@ body {
 	overflow: hidden;
 }
 
-#welcome-message {
+.header {
 	position: absolute;
 	width: 100vw;
 	padding: 32px 64px;
 	z-index: 2;
 }
 
-.profile-image {
-	width: 100px;
+.bio-container {
+	display: flex;
+	flex-direction: row;
 	height: 100px;
+}
+
+.profile-image {
+	height: 100%;
 	border-radius: 50%;
 	object-fit: cover;
 	-webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 3px 1px;
@@ -52,11 +57,35 @@ body {
 	cursor: pointer;
 }
 
-#welcome-message h3 {
-	color: #fff;
-	font-size: 36px;
-	font-weight: 100;
-	margin-top: 12px;
+.bio-vertical-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	margin-left: 24px;
+}
+
+.bio__name {
+	font-size: 2rem;
+}
+
+.bio__occupation {
+	font-size: 1.2rem;
+}
+
+.more-menu-btn {
+	position: absolute;
+	top: 24px;
+	right: 36px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	z-index: 2;
+}
+
+.more-menu-btn svg {
+	width: 36px;
+	height: 36px;
+	cursor: pointer;
 }
 
 #slider {
@@ -71,7 +100,7 @@ body {
 .cards-container {
 	height: 100%;
 	display: flex;
-	margin: 35vh 0;
+	margin: 32vh 0;
 	list-style: none;
 	will-change: left;
 }
@@ -126,6 +155,7 @@ body {
 .card .card-header .card-title {
 	font-size: 32px;
 	color: #212121;
+	word-break: break-all;
 }
 
 .card .card-header .card-type {
@@ -322,15 +352,34 @@ body {
 	body {
 		overflow-y: hidden;
 	}
-	#welcome-message {
-		padding: 32px;
+	.header {
+		padding: 24px 32px;
 	}
-	#welcome-message img {
+	.bio-container {
+		height: auto;
+		flex-direction: column;
+	}
+	.bio__name {
+		font-size: 1.25rem;
+	}
+	.bio__occupation {
+		font-size: 1rem;
+	}
+	.bio-vertical-container {
+		margin-left: 0;
+	}
+	.more-menu-btn {
+		position: absolute;
+		top: 20px;
+		right: 24px;
+	}
+	.more-menu-btn svg {
+		width: 24px;
+		height: 24px
+	}
+	.profile-image {
 		width: 60px;
 		height: 60px;
-	}
-	#welcome-message h3 {
-		font-size: 28px;
 	}
 	.cards-container {
 		margin: 0;
